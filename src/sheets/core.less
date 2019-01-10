@@ -1,0 +1,21 @@
+body {
+    background-color: #fdfdfd;
+}
+
+#app {
+    color: #333;
+}
+
+.red {
+    color: red;
+    transition: opacity 250ms;
+    cursor: default;
+
+    &:hover {
+        opacity: 0.5;
+    }
+
+    &[data-state="active"] {
+        color: blue;
+    }
+}
