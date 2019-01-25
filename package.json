@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm run karma && npm run protractor",
     "karma": "karma start karma.conf.js",
-    "protractor": "webdriver-manager update && tsc -p test/e2e && protractor protractor.conf.js",
+    "pre:protractor": "webdriver-manager update && rimraf dist/e2e-tsc && tsc -p test/e2e",
+    "protractor": "npm run pre:protractor && protractor protractor.conf.js",
     "start": "webpack -w --mode=development --devtool=cheap-module-eval-source-map",
     "local": "webpack-dev-server --hot --mode=development --devtool=cheap-module-eval-source-map",
     "build": "webpack --mode=production --devtool=source-map",
