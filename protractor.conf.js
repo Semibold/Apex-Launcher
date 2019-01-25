@@ -28,7 +28,7 @@ exports.config = {
         {
             browserName: "chrome",
             chromeOptions: {
-                args: ["--headless", "--disable-gpu", "allow-file-access-from-files", "--window-size=1280,800"],
+                args: ["--headless", "--disable-gpu", "--allow-file-access-from-files", "--window-size=1280,800"],
             },
         },
     ],
