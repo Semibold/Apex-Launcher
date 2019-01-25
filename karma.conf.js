@@ -21,7 +21,7 @@ module.exports = function(config) {
             { pattern: "node_modules/mocha/mocha.js", watched: false, included: true, served: true, nocache: false },
 
             // test files
-            "test/**/*.spec.ts",
+            "test/unit/**/*.spec.ts",
         ],
 
         // list of files to exclude
