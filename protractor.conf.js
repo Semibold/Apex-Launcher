@@ -15,6 +15,15 @@ exports.config = {
     },
     framework: "mocha",
     specs: ["dist/e2e-tsc/**/*.js"],
+
+    /**
+     * If true, Protractor will connect directly to the browser Drivers
+     * at the locations specified by chromeDriver and firefoxPath. Only Chrome
+     * and Firefox are supported for direct connect.
+     *
+     * default: false
+     */
+    directConnect: true,
     multiCapabilities: [
         {
             browserName: "chrome",
