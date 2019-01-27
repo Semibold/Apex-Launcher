@@ -1,5 +1,5 @@
 {
-  "name": "launcher",
+  "name": "apex-launcher",
   "version": "1.0.0",
   "private": true,
   "types": "src/index.ts",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Semibold/launcher.git"
+    "url": "git+https://github.com/Semibold/Apex-Launcher.git"
   },
   "author": "Aqours",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Semibold/launcher/issues"
+    "url": "https://github.com/Semibold/Apex-Launcher/issues"
   },
-  "homepage": "https://github.com/Semibold/launcher#readme",
+  "homepage": "https://github.com/Semibold/Apex-Launcher#readme",
   "engines": {
     "node": ">=8.9.0"
   },

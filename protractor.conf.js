@@ -14,7 +14,7 @@ exports.config = {
         browser.waitForAngularEnabled(false);
     },
     framework: "mocha",
-    specs: ["dist/e2e-tsc/**/*.js"],
+    specs: ["dist/e2e-tsc/**/*.spec.js"],
 
     /**
      * If true, Protractor will connect directly to the browser Drivers

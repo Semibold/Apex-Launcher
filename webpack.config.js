@@ -155,11 +155,7 @@ module.exports = function(_env = {}, _argv = {}) {
             }),
             new EventHooksPlugin({
                 environment: function() {
-                    if (config.production) {
-                        rimraf.sync(releasePath);
-                    } else {
-                        rimraf.sync(webpackPath);
-                    }
+                    rimraf.sync(config.outputPath);
                 },
             }),
             new BundleAnalyzerPlugin({

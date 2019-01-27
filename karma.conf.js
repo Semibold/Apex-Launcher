@@ -1,4 +1,5 @@
 const path = require("path");
+const rimraf = require("rimraf");
 const webpack = require("webpack");
 const cssnano = require("cssnano");
 const shell = require("shell-env");
@@ -8,8 +9,10 @@ const autoprefixer = require("autoprefixer");
 const manifest = require("./package.json");
 
 const shellEnv = Object(shell.sync());
+const coveragePath = path.resolve(__dirname, "coverage");
 
 module.exports = function(config) {
+    rimraf.sync(coveragePath);
     config.set({
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -40,7 +43,7 @@ module.exports = function(config) {
 
         // karma-coverage-istanbul-reporter
         coverageIstanbulReporter: {
-            dir: path.resolve(__dirname, "coverage"),
+            dir: coveragePath,
             reports: ["lcov"],
             fixWebpackSourcePaths: true,
         },
@@ -141,7 +144,7 @@ module.exports = function(config) {
                         name: manifest.name,
                         version: manifest.version,
                         revision: git.short(),
-                        lastModified: new Date().toISOString(),
+                        lastCompiled: new Date().toISOString(),
                     }),
                     DEBUG: true,
                 }),
