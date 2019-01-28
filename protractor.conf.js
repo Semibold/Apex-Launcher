@@ -14,6 +14,9 @@ exports.config = {
         browser.waitForAngularEnabled(false);
     },
     framework: "mocha",
+    mochaOpts: {
+        timeout: 12000,
+    },
     specs: ["dist/e2e-tsc/**/*.spec.js"],
 
     /**
