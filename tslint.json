@@ -75,6 +75,10 @@
     "interface-over-type-literal": true,
     "new-parens": true,
     "no-boolean-literal-compare": true,
+    "interface-name": [
+      true,
+      "always-prefix"
+    ],
     "variable-name": [
       true,
       "ban-keywords",
