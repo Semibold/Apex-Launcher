@@ -138,6 +138,7 @@ module.exports = function(_env = {}, _argv = {}) {
             path: config.outputPath,
             filename: "[name].js",
             libraryTarget: "umd",
+            jsonpFunction: "apexWebpackJsonp",
         },
         resolve: {
             extensions: [".tsx", ".ts", ".jsx", ".js"],
@@ -159,12 +160,21 @@ module.exports = function(_env = {}, _argv = {}) {
                 },
             }),
             new BundleAnalyzerPlugin({
-                reportFilename: `${filename}-report.html`,
+                reportFilename: `${filename}.report.html`,
                 analyzerMode: config.production ? "static" : "disabled",
                 openAnalyzer: false,
             }),
         ],
         optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    vendors: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: "vendors",
+                        chunks: "all",
+                    },
+                },
+            },
             minimizer: [
                 new UglifyJsPlugin({
                     sourceMap: Boolean(argv.devtool),
