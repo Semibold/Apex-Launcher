@@ -159,6 +159,7 @@ module.exports = function(_env = {}, _argv = {}) {
                 },
             }),
             new BundleAnalyzerPlugin({
+                reportFilename: `${filename}-report.html`,
                 analyzerMode: config.production ? "static" : "disabled",
                 openAnalyzer: false,
             }),
@@ -168,6 +169,8 @@ module.exports = function(_env = {}, _argv = {}) {
                 new UglifyJsPlugin({
                     sourceMap: Boolean(argv.devtool),
                     extractComments: false,
+                    cache: true,
+                    parallel: true,
                     uglifyOptions: {
                         compress: {
                             drop_console: false,

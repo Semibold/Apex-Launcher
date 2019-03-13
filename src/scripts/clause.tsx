@@ -1,5 +1,5 @@
 import React from "react";
-import { metadata } from "../metadata";
+import { metadata } from "./metadata";
 
 export class Clause extends React.Component {
     render() {
