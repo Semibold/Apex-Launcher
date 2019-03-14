@@ -8,6 +8,7 @@
     "start": "webpack -w --mode=development --devtool=cheap-module-eval-source-map",
     "local": "webpack-dev-server --hot --mode=development --devtool=cheap-module-eval-source-map",
     "build": "webpack --mode=production --devtool=source-map",
+    "build:dll": "webpack --config webpack.dll.config.js --mode=production --devtool=source-map",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "typecheck": "tsc --noEmit"
   },

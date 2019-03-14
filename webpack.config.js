@@ -20,6 +20,10 @@ const releasePath = path.resolve(__dirname, "dist/release");
  * @desc Webpack/Custom Command Line Interface
  */
 class CustomDefaultConfig {
+    static noop() {
+        // nonfeasance
+    }
+
     static get argv() {
         return {
             mode: "production",
@@ -144,7 +148,7 @@ module.exports = function(_env = {}, _argv = {}) {
             extensions: [".tsx", ".ts", ".jsx", ".js"],
         },
         plugins: [
-            new webpack.ProgressPlugin(shellEnv["CI"] ? new Function() : null),
+            new webpack.ProgressPlugin(shellEnv["CI"] ? CustomDefaultConfig.noop : null),
             new webpack.DefinePlugin({
                 __X_METADATA__: JSON.stringify({
                     name: filename,
@@ -164,17 +168,24 @@ module.exports = function(_env = {}, _argv = {}) {
                 analyzerMode: config.production ? "static" : "disabled",
                 openAnalyzer: false,
             }),
+            config.production
+                ? CustomDefaultConfig.noop
+                : new webpack.DllReferencePlugin({
+                      context: __dirname,
+                      manifest: require("./dist/dll/vendors.json"),
+                  }),
         ],
         optimization: {
-            splitChunks: {
-                cacheGroups: {
-                    vendors: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name: "vendors",
-                        chunks: "all",
-                    },
-                },
-            },
+            // Use `DllPlugin` and `DllReferencePlugin` to improve build time performance.
+            // splitChunks: {
+            //     cacheGroups: {
+            //         vendors: {
+            //             test: /[\\/]node_modules[\\/]/,
+            //             name: "vendors",
+            //             chunks: "all",
+            //         },
+            //     },
+            // },
             minimizer: [
                 new UglifyJsPlugin({
                     sourceMap: Boolean(argv.devtool),

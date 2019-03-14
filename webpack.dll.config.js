@@ -93,6 +93,7 @@ module.exports = function(_env = {}, _argv = {}) {
         plugins: [
             new webpack.ProgressPlugin(shellEnv["CI"] ? new Function() : null),
             new webpack.DllPlugin({
+                context: __dirname,
                 name: "[name]",
                 path: path.join(config.outputPath, "[name].json"),
             }),
