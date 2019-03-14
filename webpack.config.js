@@ -5,7 +5,7 @@ const cssnano = require("cssnano");
 const shell = require("shell-env");
 const git = require("git-rev-sync");
 const autoprefixer = require("autoprefixer");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const EventHooksPlugin = require("event-hooks-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
@@ -159,7 +159,7 @@ module.exports = function(_env = {}, _argv = {}) {
                 DEBUG: !config.production,
             }),
             new EventHooksPlugin({
-                environment: function() {
+                environment() {
                     rimraf.sync(config.outputPath);
                 },
             }),
@@ -187,12 +187,13 @@ module.exports = function(_env = {}, _argv = {}) {
             //     },
             // },
             minimizer: [
-                new UglifyJsPlugin({
+                new TerserPlugin({
                     sourceMap: Boolean(argv.devtool),
                     extractComments: false,
                     cache: true,
                     parallel: true,
-                    uglifyOptions: {
+                    terserOptions: {
+                        ecma: 5,
                         compress: {
                             drop_console: false,
                             drop_debugger: true,

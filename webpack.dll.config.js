@@ -3,7 +3,7 @@ const rimraf = require("rimraf");
 const webpack = require("webpack");
 const shell = require("shell-env");
 const git = require("git-rev-sync");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const EventHooksPlugin = require("event-hooks-webpack-plugin");
 
 const manifest = require("./package.json");
@@ -98,19 +98,20 @@ module.exports = function(_env = {}, _argv = {}) {
                 path: path.join(config.outputPath, "[name].json"),
             }),
             new EventHooksPlugin({
-                environment: function() {
+                environment() {
                     rimraf.sync(config.outputPath);
                 },
             }),
         ],
         optimization: {
             minimizer: [
-                new UglifyJsPlugin({
+                new TerserPlugin({
                     sourceMap: Boolean(argv.devtool),
                     extractComments: false,
                     cache: true,
                     parallel: true,
-                    uglifyOptions: {
+                    terserOptions: {
+                        ecma: 5,
                         compress: {
                             drop_console: false,
                             drop_debugger: true,
