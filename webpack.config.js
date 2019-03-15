@@ -164,6 +164,7 @@ module.exports = function(_env = {}, _argv = {}) {
                 },
             }),
             new BundleAnalyzerPlugin({
+                logLevel: "warn",
                 reportFilename: `${filename}.report.html`,
                 analyzerMode: config.production ? "static" : "disabled",
                 openAnalyzer: false,

@@ -7,8 +7,8 @@
     "test": "karma start karma.conf.js",
     "start": "webpack -w --mode=development --devtool=cheap-module-eval-source-map",
     "local": "webpack-dev-server --hot --mode=development --devtool=cheap-module-eval-source-map",
-    "build": "webpack --mode=production --devtool=source-map",
-    "build:dll": "webpack --config webpack.dll.config.js --mode=production --devtool=source-map",
+    "build": "webpack --mode=production --devtool=source-map --bail --display=errors-only",
+    "build:dll": "webpack --config webpack.dll.config.js --mode=production --devtool=source-map --bail",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "typecheck": "tsc --noEmit"
   },
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/Semibold/Apex-Launcher#readme",
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=10.10.0"
   },
   "husky": {
     "hooks": {
@@ -51,15 +51,21 @@
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
+    "@types/event-hooks-webpack-plugin": "^2.0.0",
     "@types/events": "^3.0.0",
     "@types/gulp": "^4.0.5",
+    "@types/karma": "^3.0.2",
     "@types/mocha": "^5.2.6",
     "@types/node": "^11.9.6",
     "@types/react": "^16.8.6",
     "@types/react-dom": "^16.8.2",
     "@types/sinon": "^7.0.8",
+    "@types/terser-webpack-plugin": "^1.2.1",
     "@types/url-parse": "^1.4.3",
     "@types/webpack": "^4.4.25",
+    "@types/webpack-bundle-analyzer": "^2.13.1",
+    "@types/webpack-dev-server": "^3.1.4",
+    "ansi-colors": "^3.2.4",
     "autoprefixer": "^9.4.9",
     "chai": "^4.2.0",
     "css-loader": "^2.1.0",
