@@ -22,7 +22,7 @@ const rollupMultiEntry = require("rollup-plugin-multi-entry");
  */
 module.exports = class RollupConcatPlugin {
     /**
-     * @param {RollupOptions} options - See `invalidInputKeySet` and `invalidOutputKeySet`.
+     * @param {RollupOptions} options - See `validInputKeySet` and `validOutputKeySet`.
      */
     constructor(options) {
         this.tag = "[RollupConcatPlugin]";
@@ -43,8 +43,8 @@ module.exports = class RollupConcatPlugin {
         if (!this.options.output || !this.options.output.file) {
             throw new Error("options.output.file is required and should not be empty");
         }
-        const invalidInputKeySet = new Set(["context", "input"]);
-        const invalidOutputKeySet = new Set(["banner", "file", "sourcemap"]);
+        const validInputKeySet = new Set(["context", "input"]);
+        const validOutputKeySet = new Set(["banner", "file", "sourcemap"]);
         const configuration = {
             plugins: [rollupSourcemaps(), rollupMultiEntry()],
             output: {
@@ -52,12 +52,12 @@ module.exports = class RollupConcatPlugin {
             },
         };
         for (const [key, value] of Object.entries(this.options)) {
-            if (invalidInputKeySet.has(key)) {
+            if (validInputKeySet.has(key)) {
                 configuration[key] = value;
             }
         }
         for (const [key, value] of Object.entries(this.options.output)) {
-            if (invalidOutputKeySet.has(key)) {
+            if (validOutputKeySet.has(key)) {
                 configuration.output[key] = value;
             }
         }
