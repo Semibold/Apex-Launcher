@@ -1,0 +1,29 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "command": {
+    "bootstrap": {
+      "hoist": true
+    },
+    "add": {
+      "exact": true
+    },
+    "create": {
+      "homepage": "https://github.com/Semibold/Apex-Launcher",
+      "license": "UNLICENSED"
+    },
+    "version": {
+      "allowBranch": "master",
+      "message": "chore(release): publish"
+    }
+  },
+  "npmClient": "npm",
+  "npmClientArgs": [
+    "--no-package-lock"
+  ],
+  "ignoreChanges": [
+    "**/*.md"
+  ],
+  "version": "independent"
+}
