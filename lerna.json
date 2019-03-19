@@ -14,6 +14,7 @@
       "license": "UNLICENSED"
     },
     "version": {
+      "exact": true,
       "allowBranch": "master",
       "message": "chore(release): publish"
     }
