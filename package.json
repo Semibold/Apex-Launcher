@@ -27,7 +27,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "browserslist": [
@@ -50,6 +51,8 @@
     "url-parse": "1.4.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "7.5.2",
+    "@commitlint/config-conventional": "7.5.0",
     "@types/chai": "4.1.7",
     "@types/event-hooks-webpack-plugin": "2.0.0",
     "@types/events": "3.0.0",
