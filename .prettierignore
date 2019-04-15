@@ -2,6 +2,7 @@ dist/**/*
 coverage/**/*
 node_modules/**/*
 
-# ignore root configration files
+# ignore configration files
 *.json
+*.yaml
 *.yml

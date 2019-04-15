@@ -1,30 +1,29 @@
 const path = require("path");
 const rimraf = require("rimraf");
-const webpack = require("webpack");
-const cssnano = require("cssnano");
-const shell = require("shell-env");
 const git = require("git-rev-sync");
-const autoprefixer = require("autoprefixer");
 
 const manifest = require("./package.json");
-
-const shellEnv = Object(shell.sync());
+const tsconfig = require("./tsconfig.json");
 const coveragePath = path.resolve(__dirname, "coverage");
 
 module.exports = function(config) {
     rimraf.sync(coveragePath);
+
     config.set({
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ["mocha"],
+        frameworks: ["mocha", "karma-typescript"],
 
         // list of files / patterns to load in the browser
         files: [
             // libary files
             { pattern: "node_modules/mocha/mocha.js", watched: false, included: true, served: true, nocache: false },
 
+            // source files
+            "src/**/*.+(ts|tsx)",
+
             // test files
-            "test/unit/**/*.spec.ts",
+            "test/unit/**/*.spec.+(ts|tsx)",
         ],
 
         // list of files to exclude
@@ -33,19 +32,32 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            "**/*.ts": ["webpack"],
+            "**/*.+(ts|tsx)": ["karma-typescript"],
         },
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ["coverage-istanbul"],
+        reporters: ["mocha"],
 
-        // karma-coverage-istanbul-reporter
-        coverageIstanbulReporter: {
-            dir: coveragePath,
-            reports: ["lcov"],
-            fixWebpackSourcePaths: true,
+        // karma-typescript config
+        karmaTypescriptConfig: {
+            reports: {
+                html: coveragePath,
+                lcovonly: coveragePath,
+            },
+            compilerOptions: tsconfig.compilerOptions,
+            bundlerOptions: {
+                constants: {
+                    __X_METADATA__: JSON.stringify({
+                        name: manifest.name,
+                        version: manifest.version,
+                        revision: git.short(),
+                        lastCompiled: new Date().toISOString(),
+                    }),
+                    DEBUG: true,
+                },
+            },
         },
 
         // web server port
@@ -72,84 +84,5 @@ module.exports = function(config) {
         // Concurrency level
         // how many browser should be started simultaneous
         concurrency: Infinity,
-
-        // webpack config
-        // Instrument only testing sources with Istanbul
-        webpack: {
-            mode: "development",
-            devtool: "inline-source-map",
-            module: {
-                rules: [
-                    {
-                        test: /\.tsx?$/,
-                        use: [
-                            {
-                                loader: "ts-loader",
-                                options: {
-                                    transpileOnly: true,
-                                },
-                            },
-                        ],
-                    },
-                    {
-                        test: /\.tsx?$/,
-                        include: path.resolve("src"),
-                        exclude: path.resolve(__dirname, "node_modules"),
-                        enforce: "post",
-                        use: [
-                            {
-                                loader: "istanbul-instrumenter-loader",
-                                options: { esModules: true },
-                            },
-                        ],
-                    },
-                    {
-                        test: /\.less$/,
-                        use: [
-                            {
-                                loader: "style-loader",
-                                options: {
-                                    attrs: { "data-injector": manifest.name },
-                                },
-                            },
-                            {
-                                loader: "css-loader",
-                                options: {
-                                    sourceMap: false,
-                                    importLoaders: 2,
-                                },
-                            },
-                            {
-                                loader: "postcss-loader",
-                                options: {
-                                    sourceMap: false,
-                                    plugins: [autoprefixer, cssnano],
-                                },
-                            },
-                            {
-                                loader: "less-loader",
-                                options: { sourceMap: false },
-                            },
-                        ],
-                    },
-                ],
-            },
-            resolve: {
-                extensions: [".tsx", ".ts", ".jsx", ".js"],
-            },
-            plugins: [
-                new webpack.ProgressPlugin(shellEnv["CI"] ? new Function() : null),
-                new webpack.DefinePlugin({
-                    __X_METADATA__: JSON.stringify({
-                        name: manifest.name,
-                        version: manifest.version,
-                        revision: git.short(),
-                        lastCompiled: new Date().toISOString(),
-                    }),
-                    DEBUG: true,
-                }),
-            ],
-            node: false,
-        },
     });
 };

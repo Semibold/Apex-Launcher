@@ -7,10 +7,3 @@ describe("Array", function() {
         });
     });
 });
-
-if (typeof self !== "undefined") {
-    for (const prop in self) {
-        // tslint:disable-next-line
-        console.log(`${prop} type:`, typeof self[prop]);
-    }
-}
