@@ -19,11 +19,8 @@ module.exports = function(config) {
             // libary files
             { pattern: "node_modules/mocha/mocha.js", watched: false, included: true, served: true, nocache: false },
 
-            // source files
+            // all files
             "src/**/*.+(ts|tsx)",
-
-            // test files
-            "test/unit/**/*.spec.+(ts|tsx)",
         ],
 
         // list of files to exclude
@@ -38,7 +35,7 @@ module.exports = function(config) {
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ["mocha"],
+        reporters: ["karma-typescript", "mocha"],
 
         // karma-typescript config
         karmaTypescriptConfig: {
