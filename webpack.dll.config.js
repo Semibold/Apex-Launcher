@@ -8,7 +8,6 @@ const EventHooksPlugin = require("event-hooks-webpack-plugin");
 
 const manifest = require("./package.json");
 const shellEnv = Object(shell.sync());
-const dllPath = path.resolve(__dirname, "dist/dll");
 
 /**
  * @readonly
@@ -33,6 +32,7 @@ class CustomDefaultConfig {
         return {
             mode: "production",
             devtool: false,
+            outputPath: path.resolve(__dirname, "dist/dll"),
         };
     }
 
@@ -53,7 +53,7 @@ class CustomDefaultConfig {
     }
 
     get outputPath() {
-        return this.production ? dllPath : dllPath;
+        return this.argvProxy.outputPath;
     }
 }
 

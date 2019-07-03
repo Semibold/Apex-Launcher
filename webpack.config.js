@@ -10,10 +10,7 @@ const EventHooksPlugin = require("event-hooks-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 const manifest = require("./package.json");
-
 const shellEnv = Object(shell.sync());
-const webpackPath = path.resolve(__dirname, "dist/webpack");
-const releasePath = path.resolve(__dirname, "dist/release");
 
 /**
  * @readonly
@@ -28,6 +25,7 @@ class CustomDefaultConfig {
         return {
             mode: "production",
             devtool: false,
+            outputPath: path.resolve(__dirname, "dist/webpack"),
         };
     }
 
@@ -48,7 +46,7 @@ class CustomDefaultConfig {
     }
 
     get outputPath() {
-        return this.production ? releasePath : webpackPath;
+        return this.argvProxy.outputPath;
     }
 }
 
