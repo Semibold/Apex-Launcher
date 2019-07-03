@@ -7,6 +7,9 @@
       "node_modules/**"
     ]
   },
+  "extends": [
+    "tslint-config-prettier"
+  ],
   "rules": {
     "member-ordering": {
       "options": [
@@ -21,24 +24,7 @@
         }
       ]
     },
-    "no-inferrable-types": [
-      true,
-      "ignore-params",
-      "ignore-properties"
-    ],
-    "no-internal-module": true,
-    "no-namespace": [
-      true,
-      "allow-declarations"
-    ],
-    "typedef": true,
-    "unified-signatures": true,
-    "ban-comma-operator": true,
-    "label-position": true,
     "no-arg": true,
-    "no-console": {
-      "severity": "warning"
-    },
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-super": true,
@@ -49,6 +35,21 @@
     "no-sparse-arrays": true,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
+    "no-unsafe-finally": true,
+    "no-internal-module": true,
+    "no-var-keyword": true,
+    "no-boolean-literal-compare": true,
+    "no-require-imports": true,
+    "no-duplicate-imports": true,
+    "no-namespace": [
+      true,
+      "allow-declarations"
+    ],
+    "no-inferrable-types": [
+      true,
+      "ignore-params",
+      "ignore-properties"
+    ],
     "no-this-assignment": [
       true,
       {
@@ -58,23 +59,24 @@
         "allow-destructuring": true
       }
     ],
-    "no-unsafe-finally": true,
-    "no-var-keyword": true,
+    "typedef": true,
+    "unified-signatures": true,
+    "ban-comma-operator": true,
+    "label-position": true,
     "radix": true,
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
     "use-isnan": true,
-    "deprecation": {
-      "severity": "warning"
-    },
-    "no-require-imports": true,
     "callable-types": true,
     "class-name": true,
     "interface-over-type-literal": true,
     "new-parens": true,
-    "no-boolean-literal-compare": true,
+    "static-this": true,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "deprecation": {
+      "severity": "warning"
+    },
     "interface-name": [
       true,
       "always-prefix"
@@ -84,6 +86,11 @@
       "ban-keywords",
       "allow-snake-case",
       "check-format"
+    ],
+    "file-name-casing": [
+      true,
+      "kebab-case",
+      "snake-case"
     ]
   }
 }
