@@ -1,1 +1,1 @@
-import "./scripts/react-app";
+import "./app-example/react-app";

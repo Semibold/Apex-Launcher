@@ -1,10 +1,9 @@
 import React from "react";
-import { metadata } from "./metadata";
+import { metadata } from "../shared/metadata";
 
 export class Clause extends React.Component {
     render() {
         if (DEBUG) {
-            // tslint:disable-next-line
             console.log("Test: conditional compilation");
         }
         return Object.keys(metadata).map((key, index) => {

@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { add } from "../../src/scripts/add";
+import { add } from "./add";
 
 describe("Utils", function() {
     describe("add()", function() {
