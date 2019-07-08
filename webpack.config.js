@@ -18,7 +18,7 @@ const shellEnv = Object(shell.sync());
  */
 class CustomDefaultConfig {
     static noop() {
-        // nonfeasance
+        // nonchalance
     }
 
     static get argv() {

@@ -38,7 +38,7 @@ class CustomDefaultConfig {
 
     static get env() {
         return {
-            // Custom envionment variables
+            // Custom environment variables
         };
     }
 
