@@ -25,6 +25,6 @@ indent_size = 4
 [*.{json,yml}]
 indent_size = 2
 
-# Configration files
+# Configuration files
 [.*]
 indent_size = 2
