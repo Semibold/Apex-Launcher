@@ -13,7 +13,7 @@
     "version": {
       "exact": true,
       "allowBranch": "master",
-      "message": "chore(release): publish"
+      "message": "chore(release): publish %v"
     }
   },
   "npmClient": "npm",
@@ -23,5 +23,5 @@
   "ignoreChanges": [
     "**/*.md"
   ],
-  "version": "independent"
+  "version": "1.0.0"
 }
