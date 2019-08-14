@@ -17,11 +17,16 @@
     }
   },
   "npmClient": "npm",
-  "npmClientArgs": [
-    "--no-package-lock"
-  ],
   "ignoreChanges": [
-    "**/*.md"
+    "**/dist/**",
+    "**/coverage/**",
+    "**/LICENSE",
+    "**/*.txt",
+    "**/*.log",
+    "**/*.md",
+    "**/.*",
+    "yarn.lock",
+    "package-lock.json"
   ],
   "version": "1.0.0"
 }

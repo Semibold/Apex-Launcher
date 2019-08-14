@@ -158,7 +158,6 @@ Desktop.ini
 *.egg-info
 eggs
 parts
-bin
 var
 sdist
 develop-eggs

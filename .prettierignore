@@ -1,8 +1,8 @@
-dist/**/*
-coverage/**/*
-node_modules/**/*
+**/dist
+**/release
+**/coverage
+**/node_modules
+**/CHANGELOG.md
 
-# ignore configration files
-*.json
-*.yaml
-*.yml
+# ignore specific format
+**/*.json
