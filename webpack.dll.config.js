@@ -3,7 +3,6 @@ const rimraf = require("rimraf");
 const webpack = require("webpack");
 const shell = require("shell-env");
 const git = require("git-rev-sync");
-const TerserPlugin = require("terser-webpack-plugin");
 const EventHooksPlugin = require("event-hooks-webpack-plugin");
 
 const manifest = require("./package.json");
@@ -16,6 +15,7 @@ const shellEnv = Object(shell.sync());
 class CustomDefaultConfig {
     static get dependencies() {
         const err = new Error("No dependencies were detected");
+
         if (manifest.dependencies) {
             const deps = Object.keys(manifest.dependencies);
             if (deps.length) {
@@ -103,35 +103,6 @@ module.exports = function(_env = {}, _argv = {}) {
                 },
             }),
         ],
-        optimization: {
-            minimizer: [
-                new TerserPlugin({
-                    sourceMap: Boolean(argv.devtool),
-                    extractComments: false,
-                    cache: true,
-                    parallel: true,
-                    terserOptions: {
-                        ecma: 5,
-                        compress: {
-                            drop_console: false,
-                            drop_debugger: true,
-                        },
-                        output: {
-                            /**
-                             * @desc escape Unicode characters in strings and regexps
-                             *       (affects directives with non-ascii characters becoming invalid)
-                             */
-                            ascii_only: false,
-
-                            /**
-                             * A real coup for debugging!
-                             */
-                            max_line_len: 4096,
-                        },
-                    },
-                }),
-            ],
-        },
         node: false,
     };
 };
