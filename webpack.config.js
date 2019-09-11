@@ -105,20 +105,20 @@ module.exports = function(_env = {}, _argv = {}) {
                         {
                             loader: "css-loader",
                             options: {
-                                sourceMap: false,
+                                sourceMap: !config.production,
                                 importLoaders: 2,
                             },
                         },
                         {
                             loader: "postcss-loader",
                             options: {
-                                sourceMap: false,
+                                sourceMap: !config.production,
                                 plugins: [autoprefixer, cssnano],
                             },
                         },
                         {
                             loader: "less-loader",
-                            options: { sourceMap: false },
+                            options: { sourceMap: !config.production },
                         },
                     ],
                 },
