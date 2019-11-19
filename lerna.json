@@ -25,8 +25,8 @@
     "**/*.log",
     "**/*.md",
     "**/.*",
-    "yarn.lock",
-    "package-lock.json"
+    "**/yarn.lock",
+    "**/package-lock.json"
   ],
   "version": "1.0.0"
 }

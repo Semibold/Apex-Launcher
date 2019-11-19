@@ -11,6 +11,8 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 const manifest = require("./package.json");
 const shellEnv = Object(shell.sync());
+const webpackPath = path.resolve(__dirname, "dist/webpack");
+const releasePath = path.resolve(__dirname, "dist/release");
 
 /**
  * @readonly
@@ -25,13 +27,12 @@ class CustomDefaultConfig {
         return {
             mode: "production",
             devtool: false,
-            outputPath: path.resolve(__dirname, "dist/webpack"),
         };
     }
 
     static get env() {
         return {
-            // Custom envionment variables
+            // Custom environment variables
         };
     }
 
@@ -46,7 +47,7 @@ class CustomDefaultConfig {
     }
 
     get outputPath() {
-        return this.argvProxy.outputPath;
+        return this.production ? releasePath : webpackPath;
     }
 }
 
@@ -166,24 +167,8 @@ module.exports = function(_env = {}, _argv = {}) {
                 analyzerMode: config.production ? "static" : "disabled",
                 openAnalyzer: false,
             }),
-            config.production
-                ? CustomDefaultConfig.noop
-                : new webpack.DllReferencePlugin({
-                      context: __dirname,
-                      manifest: require("./dist/dll/vendors.json"),
-                  }),
         ],
         optimization: {
-            // Use `DllPlugin` and `DllReferencePlugin` to improve build time performance.
-            // splitChunks: {
-            //     cacheGroups: {
-            //         vendors: {
-            //             test: /[\\/]node_modules[\\/]/,
-            //             name: "vendors",
-            //             chunks: "all",
-            //         },
-            //     },
-            // },
             minimizer: [
                 new TerserPlugin({
                     sourceMap: Boolean(argv.devtool),
@@ -208,6 +193,7 @@ module.exports = function(_env = {}, _argv = {}) {
                              */
                             max_line_len: 4096,
                             preamble: preamble,
+                            comments: false,
                         },
                     },
                 }),
