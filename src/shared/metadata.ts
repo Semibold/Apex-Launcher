@@ -1,4 +1,4 @@
-interface IMetadata {
+interface Metadata {
     readonly name: string;
     readonly version: string;
     readonly revision: string;
@@ -6,4 +6,4 @@ interface IMetadata {
 }
 
 // @ts-ignore (from webpack.DefinePlugin)
-export const metadata: IMetadata = Object.freeze(__X_METADATA__);
+export const metadata: Metadata = Object.freeze(__X_METADATA__);

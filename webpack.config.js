@@ -82,6 +82,16 @@ module.exports = function(_env = {}, _argv = {}) {
         module: {
             rules: [
                 {
+                    test: /\.worker\.ts$/,
+                    use: {
+                        loader: "worker-loader",
+                        options: {
+                            inline: true,
+                            fallback: false,
+                        },
+                    },
+                },
+                {
                     test: /\.tsx?$/,
                     use: [
                         {

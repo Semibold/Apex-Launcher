@@ -8,7 +8,7 @@
     "local": "webpack-dev-server --hot --mode=development --devtool=cheap-module-eval-source-map",
     "build": "webpack --mode=production --devtool=source-map --bail",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
-    "typecheck": "tsc --noEmit"
+    "tscheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
