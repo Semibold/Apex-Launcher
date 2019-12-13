@@ -77,10 +77,6 @@
     "deprecation": {
       "severity": "warning"
     },
-    "interface-name": [
-      true,
-      "always-prefix"
-    ],
     "variable-name": [
       true,
       "ban-keywords",
