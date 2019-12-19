@@ -20,6 +20,10 @@
     "url": "https://github.com/Semibold/Apex-Launcher/issues"
   },
   "homepage": "https://github.com/Semibold/Apex-Launcher#readme",
+  "prettier": {
+    "singleQuote": false,
+    "trailingComma": "all"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged",
@@ -56,7 +60,7 @@
     "@types/gulp": "4.0.6",
     "@types/karma": "3.0.4",
     "@types/mocha": "5.2.7",
-    "@types/node": "12.12.17",
+    "@types/node": "12.12.21",
     "@types/react": "16.9.16",
     "@types/react-dom": "16.9.4",
     "@types/rimraf": "2.0.3",
@@ -68,11 +72,11 @@
     "@types/webpack-dev-server": "3.9.0",
     "autoprefixer": "9.7.3",
     "chai": "4.2.0",
-    "css-loader": "3.3.2",
+    "css-loader": "3.4.0",
     "cssnano": "4.1.10",
-    "event-hooks-webpack-plugin": "2.1.4",
+    "event-hooks-webpack-plugin": "2.1.5",
     "file-loader": "5.0.2",
-    "git-rev-sync": "1.12.0",
+    "git-rev-sync": "2.0.0",
     "gulp": "4.0.2",
     "husky": "3.1.0",
     "karma": "4.4.1",
@@ -89,17 +93,17 @@
     "rimraf": "3.0.0",
     "shell-env": "3.0.0",
     "sinon": "7.5.0",
-    "style-loader": "1.0.1",
-    "terser-webpack-plugin": "2.3.0",
+    "style-loader": "1.0.2",
+    "terser-webpack-plugin": "2.3.1",
     "ts-loader": "6.2.1",
     "tslint": "5.20.1",
     "tslint-config-prettier": "1.18.0",
     "typescript": "3.7.3",
     "url-loader": "3.0.0",
-    "webpack": "4.41.2",
+    "webpack": "4.41.4",
     "webpack-bundle-analyzer": "3.6.0",
     "webpack-cli": "3.3.10",
-    "webpack-dev-server": "3.9.0",
+    "webpack-dev-server": "3.10.0",
     "worker-loader": "2.0.0"
   }
 }

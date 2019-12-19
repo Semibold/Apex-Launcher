@@ -1,10 +1,10 @@
 {
   "linterOptions": {
     "exclude": [
-      "demo/**",
-      "dist/**",
-      "coverage/**",
-      "node_modules/**"
+      "**/demo/**",
+      "**/dist/**",
+      "**/coverage/**",
+      "**/node_modules/**"
     ]
   },
   "extends": [
@@ -24,6 +24,7 @@
         }
       ]
     },
+    "ban-types": true,
     "no-arg": true,
     "no-construct": true,
     "no-debugger": true,
@@ -41,6 +42,9 @@
     "no-boolean-literal-compare": true,
     "no-require-imports": true,
     "no-duplicate-imports": true,
+    "no-tautology-expression": true,
+    "no-default-export": true,
+    "no-redundant-jsdoc": true,
     "no-namespace": [
       true,
       "allow-declarations"
