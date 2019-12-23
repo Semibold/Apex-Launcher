@@ -24,7 +24,6 @@
         }
       ]
     },
-    "ban-types": true,
     "no-arg": true,
     "no-construct": true,
     "no-debugger": true,
