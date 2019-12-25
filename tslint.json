@@ -44,6 +44,7 @@
     "no-tautology-expression": true,
     "no-default-export": true,
     "no-redundant-jsdoc": true,
+    "no-implicit-dependencies": true,
     "no-namespace": [
       true,
       "allow-declarations"
