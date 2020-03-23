@@ -23,7 +23,7 @@ export interface MiscObject {
     devicePixelRatio: number;
     screen: string;
     gpu: string;
-    url: string;
+    frameUrl: string;
     referrer: string;
 }
 
@@ -138,7 +138,7 @@ export class Log {
                 devicePixelRatio: self.devicePixelRatio || 0,
                 screen: `width: ${screen.width}, height: ${screen.height}`,
                 gpu: `vendor: ${GPU_INFO.vendor}, renderer: ${GPU_INFO.renderer}`,
-                url: document.URL,
+                frameUrl: document.URL,
                 referrer: document.referrer || "n/a",
             },
         };
