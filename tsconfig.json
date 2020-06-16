@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "pretty": true,
-    "strict": true,
+    "strict": false,
     "sourceMap": true,
     "skipLibCheck": true,
     "importHelpers": true,
