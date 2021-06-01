@@ -4,10 +4,12 @@ const webpack = require("webpack");
 const cssnano = require("cssnano");
 const shell = require("shell-env");
 const git = require("git-rev-sync");
+const moment = require('moment');
 const autoprefixer = require("autoprefixer");
 const TerserPlugin = require("terser-webpack-plugin");
 const EventHooksPlugin = require("event-hooks-webpack-plugin");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin');
 
 const manifest = require("./package.json");
 const shellEnv = Object(shell.sync());
@@ -19,10 +21,6 @@ const releasePath = path.resolve(__dirname, "dist/release");
  * @desc Webpack/Custom Command Line Interface
  */
 class CustomDefaultConfig {
-    static noop() {
-        // nonchalance
-    }
-
     static get argv() {
         return {
             mode: "production",
@@ -39,7 +37,7 @@ class CustomDefaultConfig {
     constructor(envProxy, argvProxy) {
         this.envProxy = envProxy;
         this.argvProxy = argvProxy;
-        this.lastCompiled = new Date().toISOString();
+        this.lastCompiled = moment().utcOffset(8).format();
     }
 
     get production() {
@@ -76,7 +74,8 @@ module.exports = function(_env = {}, _argv = {}) {
     return {
         mode: argv.mode,
         entry: {
-            [filename]: ["./src/index.less", "./src/index.ts"],
+            demo_mobx: './src/demo-mobx/index',
+            demo_react: './src/demo-react/index',
         },
         devtool: argv.devtool,
         module: {
@@ -96,11 +95,6 @@ module.exports = function(_env = {}, _argv = {}) {
                     use: [
                         {
                             loader: "ts-loader",
-                            options: {
-                                compilerOptions: {
-                                    module: "esnext",
-                                },
-                            },
                         },
                     ],
                 },
@@ -124,7 +118,9 @@ module.exports = function(_env = {}, _argv = {}) {
                             loader: "postcss-loader",
                             options: {
                                 sourceMap: !config.production,
-                                plugins: [autoprefixer, cssnano],
+                                postcssOptions: {
+                                    plugins: [autoprefixer, cssnano],
+                                },
                             },
                         },
                         {
@@ -142,7 +138,6 @@ module.exports = function(_env = {}, _argv = {}) {
             host: "localhost",
             port: 8081,
             open: false,
-            openPage: "./demo/index.html",
             headers: {
                 "X-Custom-Server": "webpack-dev-server",
             },
@@ -150,13 +145,15 @@ module.exports = function(_env = {}, _argv = {}) {
         output: {
             path: config.outputPath,
             filename: "[name].js",
-            libraryTarget: "umd",
+            library: {
+                type: "umd",
+            },
         },
         resolve: {
             extensions: [".tsx", ".ts", ".jsx", ".js"],
         },
         plugins: [
-            new webpack.ProgressPlugin(shellEnv["CI"] ? CustomDefaultConfig.noop : null),
+            new webpack.ProgressPlugin(shellEnv["CI"] ? new Function() : {}),
             new webpack.DefinePlugin({
                 __X_METADATA__: JSON.stringify({
                     name: filename,
@@ -166,6 +163,12 @@ module.exports = function(_env = {}, _argv = {}) {
                 }),
                 DEBUG: !config.production,
             }),
+            new webpack.BannerPlugin({
+                banner: preamble,
+                entryOnly: true,
+                raw: true,
+            }),
+            new RetryChunkLoadPlugin(),
             new EventHooksPlugin({
                 environment() {
                     rimraf.sync(config.outputPath);
@@ -181,9 +184,7 @@ module.exports = function(_env = {}, _argv = {}) {
         optimization: {
             minimizer: [
                 new TerserPlugin({
-                    sourceMap: Boolean(argv.devtool),
                     extractComments: false,
-                    cache: true,
                     parallel: true,
                     terserOptions: {
                         ecma: 5,
@@ -202,7 +203,6 @@ module.exports = function(_env = {}, _argv = {}) {
                              * A real coup for debugging!
                              */
                             max_line_len: 4096,
-                            preamble: preamble,
                             comments: false,
                         },
                     },
