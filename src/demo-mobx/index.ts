@@ -3,7 +3,7 @@ import { autorun, computed, observable, action, makeObservable } from "mobx";
 
 class RootApp {
     @observable
-    protected clockValue: DOMTimeStamp = Date.now();
+    protected clockValue: number = Date.now();
 
     protected clockTimer: number;
     protected clockRunner: () => void;

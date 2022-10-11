@@ -1,0 +1,25 @@
+{
+  "env": {
+    "node": true,
+    "browser": true,
+    "worker": true,
+    "serviceworker": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-undef": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-var-requires": "off"
+  }
+}

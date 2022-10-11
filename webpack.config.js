@@ -2,7 +2,6 @@ const path = require("path");
 const rimraf = require("rimraf");
 const webpack = require("webpack");
 const cssnano = require("cssnano");
-const shell = require("shell-env");
 const git = require("git-rev-sync");
 const moment = require('moment');
 const autoprefixer = require("autoprefixer");
@@ -12,7 +11,6 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin');
 
 const manifest = require("./package.json");
-const shellEnv = Object(shell.sync());
 const webpackPath = path.resolve(__dirname, "dist/webpack");
 const releasePath = path.resolve(__dirname, "dist/release");
 
@@ -153,7 +151,7 @@ module.exports = function(_env = {}, _argv = {}) {
             extensions: [".tsx", ".ts", ".jsx", ".js"],
         },
         plugins: [
-            new webpack.ProgressPlugin(shellEnv["CI"] ? new Function() : {}),
+            new webpack.ProgressPlugin(process.env.CI ? new Function() : {}),
             new webpack.DefinePlugin({
                 __X_METADATA__: JSON.stringify({
                     name: filename,
