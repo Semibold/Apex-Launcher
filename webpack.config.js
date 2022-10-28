@@ -130,14 +130,18 @@ module.exports = function(_env = {}, _argv = {}) {
             ],
         },
         devServer: {
-            compress: true,
-            overlay: true,
-            publicPath: "/dist/webpack/",
             host: "localhost",
             port: 8081,
             open: false,
+            compress: true,
             headers: {
                 "X-Custom-Server": "webpack-dev-server",
+            },
+            static: {
+                directory: __dirname,
+            },
+            devMiddleware: {
+                publicPath: "/dist/webpack",
             },
         },
         output: {
