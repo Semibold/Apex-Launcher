@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
+    "husky:pre-commit": "pretty-quick --staged",
+    "husky:commit-msg": "commitlint --edit ${1}",
     "test": "npm run eslint && npm run tscheck",
     "start": "webpack -w --mode=development --devtool=eval-cheap-module-source-map",
     "local": "webpack serve --hot --mode=development --devtool=eval-cheap-module-source-map",
@@ -23,12 +26,6 @@
   "prettier": {
     "singleQuote": false,
     "trailingComma": "all"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "browserslist": [
     "Firefox ESR",
@@ -53,7 +50,7 @@
   "optionalDependencies": {
     "@commitlint/cli": "17.1.2",
     "@commitlint/config-conventional": "17.1.0",
-    "husky": "2.4.1"
+    "husky": "8.0.1"
   },
   "devDependencies": {
     "@types/event-hooks-webpack-plugin": "2.2.2",
