@@ -178,7 +178,3 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
-
-# Generated File
-yarn.lock
-package-lock.json
