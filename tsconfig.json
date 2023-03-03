@@ -1,29 +1,12 @@
 {
-  "compileOnSave": false,
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "pretty": true,
-    "strict": false,
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "noImplicitAny": true,
-    "importHelpers": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "downlevelIteration": true,
-    "useDefineForClassFields": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": false,
-    "jsx": "react",
-    "target": "es5",
-    "module": "esnext",
-    "outDir": "./dist/out-tsc",
-    "moduleResolution": "node",
+    "jsx": "react-jsx",
     "lib": [
       "dom",
-      "scripthost",
-      "esnext"
+      "esnext",
+      "scripthost"
     ]
-  }
+  },
+  "include": ["**/*"]
 }

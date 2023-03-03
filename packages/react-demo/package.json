@@ -1,0 +1,13 @@
+{
+  "name": "@apex/react-demo",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "start": "webpack --mode=development --devtool=eval-cheap-module-source-map",
+    "https": "webpack serve --mode=development --devtool=eval-cheap-module-source-map"
+  },
+  "keywords": [],
+  "author": "Aqours",
+  "license": "ISC"
+}
