@@ -3,7 +3,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const { merge } = require('webpack-merge');
 
 const { BaseDefaultConfig } = require('./misc/base');
-const { getBaseRules } = require('./core/loader');
 const { getBasePlugins } = require('./core/plugin');
 const { getBaseOutput } = require('./core/output');
 
@@ -23,7 +22,7 @@ exports.getWebpackConfig = function (projectName, customWebpackConfig) {
             mode: config.mode,
             devtool: config.devtool,
             module: {
-                rules: getBaseRules(config),
+                rules: [],
             },
             output: getBaseOutput(config),
             plugins: getBasePlugins(config),
