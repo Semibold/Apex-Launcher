@@ -2,4 +2,4 @@
  * Substitutable constants (from webpack.DefinePlugin)
  * Conditional compilation
  */
-declare const Debug: boolean;
+declare const DEBUG: boolean;
