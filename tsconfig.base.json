@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "pretty": true,
-    "strict": false,
     "sourceMap": true,
     "skipLibCheck": true,
     "noImplicitAny": true,
@@ -10,10 +9,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "downlevelIteration": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": false,
     "target": "es5",
     "module": "esnext",
     "moduleResolution": "node",
