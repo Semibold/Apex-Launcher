@@ -8,7 +8,7 @@ export class TimerStore {
         makeAutoObservable(this);
     }
 
-    increaseTimer(rate: number = 1) {
+    increaseTimer(rate = 1) {
         this.timePassed += rate;
     }
 }
