@@ -46,6 +46,14 @@ exports.BaseDefaultConfig = class BaseDefaultConfig {
         this._lastCompiled = moment().utcOffset(8).format();
     }
 
+    get env() {
+        return this._envProxy;
+    }
+
+    get argv() {
+        return this._argvProxy;
+    }
+
     get mode() {
         return this._argvProxy.mode;
     }
