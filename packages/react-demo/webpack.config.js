@@ -4,7 +4,7 @@ const { getAssetRules, getBaseRules } = require('@apex/webpack-config/core/loade
 module.exports = getWebpackConfig('react-demo', function (env, argv, config) {
     return {
         entry: {
-            app: './src/app',
+            app: './src/index',
         },
         module: {
             rules: getBaseRules(config).concat(getAssetRules(config)),

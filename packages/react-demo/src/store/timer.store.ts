@@ -1,13 +1,14 @@
 import { makeAutoObservable } from 'mobx';
+import { RootStore } from './root.store';
 
 export class TimerStore {
-    secondsPassed = 0;
+    timePassed = 0;
 
-    constructor() {
+    constructor(readonly rootStore: RootStore) {
         makeAutoObservable(this);
     }
 
-    increaseTimer() {
-        this.secondsPassed += 1;
+    increaseTimer(rate: number = 1) {
+        this.timePassed += rate;
     }
 }
