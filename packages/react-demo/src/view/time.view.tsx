@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 interface ITimeViewProps {
     tip?: string;
+    node?: HTMLElement;
 }
 
 /**
@@ -12,5 +13,5 @@ interface ITimeViewProps {
 export const TimerView = observer((props: ITimeViewProps) => {
     const { timerStore } = useStore();
 
-    return <TimerCom tip={props.tip} timePassed={timerStore.timePassed} />;
+    return <TimerCom timePassed={timerStore.timePassed} {...props} />;
 });
