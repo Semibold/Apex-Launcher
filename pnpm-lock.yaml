@@ -43,7 +43,6 @@ importers:
             less-loader: 11.1.0
             lodash-es: 4.17.21
             mobx: 6.8.0
-            mobx-react-lite: 3.4.0
             moment: 2.29.4
             npm-check-updates: 16.7.10
             postcss: 8.4.21
@@ -53,8 +52,6 @@ importers:
             prettier: 2.8.4
             pretty-quick: 3.1.3
             qs: 6.11.0
-            react: 18.2.0
-            react-dom: 18.2.0
             rimraf: 4.2.0
             semver: 7.3.8
             style-loader: 3.3.1
@@ -78,10 +75,7 @@ importers:
             js-cookie: 3.0.1
             lodash-es: 4.17.21
             mobx: 6.8.0
-            mobx-react-lite: 3.4.0_woojb62cqeyk443mbl7msrwu2e
             qs: 6.11.0
-            react: 18.2.0
-            react-dom: 18.2.0_react@18.2.0
         devDependencies:
             '@apex/webpack-config': link:helpers/webpack-config
             '@babel/cli': 7.21.0_@babel+core@7.21.0
@@ -143,6 +137,16 @@ importers:
             webpack-merge: 5.8.0
             webpack-retry-chunk-load-plugin: 3.1.1_webpack@5.75.0
             webpackbar: 5.0.2_webpack@5.75.0
+
+    packages/react-demo:
+        specifiers:
+            mobx-react-lite: 3.4.0
+            react: 18.2.0
+            react-dom: 18.2.0
+        dependencies:
+            mobx-react-lite: 3.4.0_woojb62cqeyk443mbl7msrwu2e
+            react: 18.2.0
+            react-dom: 18.2.0_react@18.2.0
 
 packages:
     /@ampproject/remapping/2.2.0:
