@@ -6,3 +6,4 @@
 
 # ignore specific format
 **/*.json
+pnpm-lock.yaml
