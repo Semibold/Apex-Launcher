@@ -3,7 +3,7 @@ import { createRoot, Root } from 'react-dom/client';
 import { RootStore } from './store/root.store';
 import JetbrainsLogo from './asset/jetbrains.svg';
 import { RootContext } from './context';
-import { TimerView } from './view/time.view';
+import { TimerView } from './view/timer.view';
 
 export class App {
     root: Root;
