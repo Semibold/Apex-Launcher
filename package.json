@@ -40,7 +40,6 @@
     "events": "3.3.0",
     "js-cookie": "3.0.1",
     "lodash-es": "4.17.21",
-    "mobx": "6.8.0",
     "qs": "6.11.0"
   },
   "devDependencies": {
