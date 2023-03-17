@@ -2,9 +2,13 @@ const cssnano = require('cssnano');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssCustomProperties = require('postcss-custom-properties');
 
-exports.getBaseRules = function (config) {
-    return [
-        {
+module.exports = class BaseDefaultLoader {
+    constructor(config = Object.create(null)) {
+        this.config = config;
+    }
+
+    get tsLoader() {
+        return {
             test: /\.tsx?$/,
             use: [
                 {
@@ -16,8 +20,11 @@ exports.getBaseRules = function (config) {
                     },
                 },
             ],
-        },
-        {
+        };
+    }
+
+    get babelLoader() {
+        return {
             test: /\.jsx?$/,
             use: [
                 {
@@ -27,8 +34,13 @@ exports.getBaseRules = function (config) {
                     },
                 },
             ],
-        },
-        {
+        };
+    }
+
+    get lessLoader() {
+        const config = this.config;
+
+        return {
             test: /\.less$/,
             exclude: /\.lazy\.less$/,
             use: [
@@ -60,8 +72,13 @@ exports.getBaseRules = function (config) {
                     options: { sourceMap: !!config.devtool },
                 },
             ],
-        },
-        {
+        };
+    }
+
+    get lessLazyLoader() {
+        const config = this.config;
+
+        return {
             test: /\.lazy\.less$/,
             use: [
                 {
@@ -92,13 +109,11 @@ exports.getBaseRules = function (config) {
                     options: { sourceMap: !!config.devtool },
                 },
             ],
-        },
-    ];
-};
+        };
+    }
 
-exports.getAssetRules = function () {
-    return [
-        {
+    get svgLoader() {
+        return {
             test: /\.svg$/,
             use: [
                 {
@@ -108,12 +123,29 @@ exports.getAssetRules = function () {
                         classPrefix: true,
                     },
                 },
-                'svgo-loader',
+                {
+                    loader: 'svgo-loader',
+                    options: {
+                        plugins: [
+                            {
+                                name: 'preset-default',
+                                params: {
+                                    overrides: {
+                                        removeViewBox: false,
+                                    },
+                                },
+                            },
+                        ],
+                    },
+                },
             ],
-        },
-        {
+        };
+    }
+
+    get assetInline() {
+        return {
             test: /\.(png|jpg|gif|woff)$/,
             type: 'asset/inline',
-        },
-    ];
+        };
+    }
 };

@@ -1,6 +1,6 @@
 <template>
     <TimerView :="$props"></TimerView>
-    <p v-html="JetbrainsLogo"></p>
+    <p class="svg-icon" v-html="JetbrainsLogo"></p>
 </template>
 
 <script>
@@ -23,3 +23,9 @@ export default {
     },
 };
 </script>
+
+<style lang="less" scoped>
+.svg-icon {
+    width: 128px;
+}
+</style>

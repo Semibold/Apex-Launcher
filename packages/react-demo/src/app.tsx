@@ -23,7 +23,7 @@ export class App {
             // @see https://github.com/facebook/react/issues/24304#issuecomment-1094565891
             <RootContext.Provider value={this.rootStore}>
                 <TimerView node={this.node} tip={this.rate === 1 || this.rate == null ? null : `${this.rate}x`} />
-                <p dangerouslySetInnerHTML={{ __html: JetbrainsLogo }} />
+                <p style={{ width: 128 }} dangerouslySetInnerHTML={{ __html: JetbrainsLogo }} />
             </RootContext.Provider>,
         );
     }

@@ -6,7 +6,7 @@ const moment = require('moment');
  * @desc Webpack/Custom Command Line Interface
  * @desc 在这里自定义变量
  */
-exports.BaseDefaultConfig = class BaseDefaultConfig {
+module.exports = class BaseDefaultConfig {
     static get argv() {
         return {
             mode: 'production',

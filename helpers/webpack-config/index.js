@@ -2,16 +2,15 @@ const git = require('git-rev-sync');
 const TerserPlugin = require('terser-webpack-plugin');
 const { merge } = require('webpack-merge');
 
-const { BaseDefaultConfig } = require('./misc/base');
-const { getBasePlugins } = require('./core/plugin');
-const { getBaseOutput } = require('./core/output');
+const BaseDefaultConfig = require('./lib/base');
 
-exports.getWebpackConfig = function (projectName, customWebpackConfig) {
+module.exports = function getWebpackConfig(projectName, customWebpackFn) {
     /**
      * @desc webpack config
      */
     return function (_env, _argv) {
         const config = new BaseDefaultConfig(_env, _argv, projectName);
+        const customWebpackConfig = customWebpackFn && customWebpackFn(config.env, config.argv, config);
 
         console.log(
             `mode: ${config.mode}, devtool: ${config.devtool}; revision: ${config.revision}, branch: ${git.branch()}`,
@@ -24,8 +23,14 @@ exports.getWebpackConfig = function (projectName, customWebpackConfig) {
             module: {
                 rules: [],
             },
-            output: getBaseOutput(config),
-            plugins: getBasePlugins(config),
+            output: {
+                clean: true,
+                library: {
+                    type: 'umd',
+                },
+                filename: '[name].js',
+            },
+            plugins: [],
             resolve: {
                 extensions: ['.tsx', '.ts', '...'],
             },
@@ -44,11 +49,6 @@ exports.getWebpackConfig = function (projectName, customWebpackConfig) {
                 ],
             },
         };
-
-        customWebpackConfig =
-            typeof customWebpackConfig === 'function'
-                ? customWebpackConfig(config.env, config.argv, config)
-                : customWebpackConfig;
 
         return merge(defWebpackConfig, customWebpackConfig);
     };

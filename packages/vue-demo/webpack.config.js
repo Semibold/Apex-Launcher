@@ -1,22 +1,18 @@
-const { mergeWithRules } = require('webpack-merge');
 const { VueLoaderPlugin } = require('vue-loader');
 
-const { getWebpackConfig } = require('@apex/webpack-config');
-const { getAssetRules, getBaseRules } = require('@apex/webpack-config/core/loader');
+const getWebpackConfig = require('@apex/webpack-config');
+const BaseDefaultLoader = require('@apex/webpack-config/lib/loader');
+const BaseDefaultPlugin = require('@apex/webpack-config/lib/plugin');
 
 module.exports = getWebpackConfig('vue-demo', function (env, argv, config) {
-    const mergeRules = mergeWithRules({
-        rules: {
-            test: 'match',
-            use: 'replace',
-        },
-    });
+    const baseLoader = new BaseDefaultLoader(config);
+    const basePlugin = new BaseDefaultPlugin(config);
 
-    const detail = mergeRules(
-        {
-            rules: getBaseRules(config).concat(getAssetRules(config)),
+    return {
+        entry: {
+            app: './src/index',
         },
-        {
+        module: {
             rules: [
                 {
                     test: /\.vue$/,
@@ -34,17 +30,12 @@ module.exports = getWebpackConfig('vue-demo', function (env, argv, config) {
                         },
                     ],
                 },
+                baseLoader.babelLoader,
+                baseLoader.lessLoader,
+                baseLoader.lessLazyLoader,
+                baseLoader.svgLoader,
             ],
         },
-    );
-
-    return {
-        entry: {
-            app: './src/index',
-        },
-        module: {
-            rules: detail.rules,
-        },
-        plugins: [new VueLoaderPlugin()],
+        plugins: [basePlugin.webpackBar, basePlugin.bannerPlugin, basePlugin.definePlugin, new VueLoaderPlugin()],
     };
 });
