@@ -5,13 +5,13 @@
   "scripts": {
     "build": "webpack --mode=production",
     "start": "webpack --mode=development --devtool=eval-cheap-module-source-map",
-    "https": "webpack serve --mode=development --devtool=eval-cheap-module-source-map"
+    "serve": "webpack serve --mode=development --devtool=eval-cheap-module-source-map"
   },
   "keywords": [],
   "author": "Aqours",
   "license": "ISC",
   "dependencies": {
-    "pinia": "2.0.33",
+    "pinia": "2.0.34",
     "vue": "3.2.47",
     "vue-loader": "17.0.1"
   }

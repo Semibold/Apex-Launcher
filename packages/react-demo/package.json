@@ -5,14 +5,14 @@
   "scripts": {
     "build": "webpack --mode=production",
     "start": "webpack --mode=development --devtool=eval-cheap-module-source-map",
-    "https": "webpack serve --mode=development --devtool=eval-cheap-module-source-map"
+    "serve": "webpack serve --mode=development --devtool=eval-cheap-module-source-map"
   },
   "keywords": [],
   "author": "Aqours",
   "license": "ISC",
   "dependencies": {
-    "mobx": "6.8.0",
-    "mobx-react-lite": "3.4.0",
+    "mobx": "6.9.0",
+    "mobx-react-lite": "3.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }
