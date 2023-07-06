@@ -8,12 +8,24 @@ module.exports = class BaseDefaultLoader {
     }
 
     get tsLoader() {
+        if (!this.config.production) {
+            return {
+                test: /\.tsx?$/,
+                use: [
+                    {
+                        loader: 'esbuild-loader',
+                    },
+                ],
+            };
+        }
+
         return {
             test: /\.tsx?$/,
             use: [
                 {
                     loader: 'ts-loader',
                     options: {
+                        transpileOnly: !this.config.production,
                         compilerOptions: {
                             module: 'esnext',
                         },
@@ -24,6 +36,17 @@ module.exports = class BaseDefaultLoader {
     }
 
     get babelLoader() {
+        if (!this.config.production) {
+            return {
+                test: /\.jsx?$/,
+                use: [
+                    {
+                        loader: 'esbuild-loader',
+                    },
+                ],
+            };
+        }
+
         return {
             test: /\.jsx?$/,
             use: [

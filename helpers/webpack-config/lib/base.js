@@ -80,7 +80,7 @@ module.exports = class BaseDefaultConfig {
 
     get preamble() {
         // prettier-ignore
-        return `/*! @Metadata ${this.name}: ${this.version}-${this.revision} (${this.lastCompiled}) */`;
+        return `/*! @metadata ${this.name}: ${this.version}-${this.revision} (${this.lastCompiled}) */`;
     }
 
     get production() {

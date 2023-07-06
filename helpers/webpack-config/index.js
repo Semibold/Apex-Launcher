@@ -41,7 +41,7 @@ module.exports = function getWebpackConfig(projectName, customWebpackFn) {
                         terserOptions: {
                             ecma: 5,
                             output: {
-                                comments: /^!\s@Metadata\s/,
+                                comments: /^!\s@metadata\s/,
                                 max_line_len: 8192,
                             },
                         },

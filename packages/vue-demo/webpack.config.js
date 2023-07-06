@@ -19,19 +19,31 @@ module.exports = getWebpackConfig('vue-demo', function (env, argv, config) {
                     test: /\.vue$/,
                     use: [{ loader: 'vue-loader' }],
                 },
-                {
-                    test: /\.tsx?$/,
-                    use: [
-                        {
-                            loader: 'ts-loader',
-                            options: {
-                                appendTsSuffixTo: [/\.vue$/],
-                                compilerOptions: { module: 'esnext' },
-                            },
-                        },
-                    ],
-                },
-                baseLoader.babelLoader,
+                config.production
+                    ? {
+                          test: /\.tsx?$/,
+                          use: [
+                              {
+                                  loader: 'ts-loader',
+                                  options: {
+                                      appendTsSuffixTo: [/\.vue$/],
+                                      transpileOnly: !config.production,
+                                      compilerOptions: { module: 'esnext' },
+                                  },
+                              },
+                          ],
+                      }
+                    : {
+                          test: /\.tsx?$/,
+                          use: [
+                              {
+                                  loader: 'esbuild-loader',
+                                  options: {
+                                      loader: 'tsx',
+                                  },
+                              },
+                          ],
+                      },
                 baseLoader.lessLoader,
                 baseLoader.lessLazyLoader,
                 baseLoader.svgLoader,
