@@ -8,17 +8,6 @@ module.exports = class BaseDefaultLoader {
     }
 
     get tsLoader() {
-        if (!this.config.production) {
-            return {
-                test: /\.tsx?$/,
-                use: [
-                    {
-                        loader: 'esbuild-loader',
-                    },
-                ],
-            };
-        }
-
         return {
             test: /\.tsx?$/,
             use: [
@@ -36,17 +25,6 @@ module.exports = class BaseDefaultLoader {
     }
 
     get babelLoader() {
-        if (!this.config.production) {
-            return {
-                test: /\.jsx?$/,
-                use: [
-                    {
-                        loader: 'esbuild-loader',
-                    },
-                ],
-            };
-        }
-
         return {
             test: /\.jsx?$/,
             use: [
@@ -55,6 +33,17 @@ module.exports = class BaseDefaultLoader {
                     options: {
                         presets: ['@babel/preset-env'],
                     },
+                },
+            ],
+        };
+    }
+
+    get esbuildLoader() {
+        return {
+            test: /\.[jt]sx?$/,
+            use: [
+                {
+                    loader: 'esbuild-loader',
                 },
             ],
         };
@@ -170,5 +159,13 @@ module.exports = class BaseDefaultLoader {
             test: /\.(png|jpg|gif|woff)$/,
             type: 'asset/inline',
         };
+    }
+
+    getScriptLoaders() {
+        if (this.config.production) {
+            return [this.tsLoader, this.babelLoader];
+        } else {
+            return [this.esbuildLoader];
+        }
     }
 };

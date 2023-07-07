@@ -12,8 +12,7 @@ module.exports = getWebpackConfig('react-demo', function (env, argv, config) {
         },
         module: {
             rules: [
-                baseLoader.tsLoader,
-                baseLoader.babelLoader,
+                ...baseLoader.getScriptLoaders(),
                 baseLoader.lessLoader,
                 baseLoader.lessLazyLoader,
                 baseLoader.svgLoader,
