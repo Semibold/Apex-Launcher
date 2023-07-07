@@ -1,5 +1,10 @@
 {
   "compileOnSave": false,
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "compilerOptions": {
     "pretty": true,
     "strict": false,
@@ -11,8 +16,7 @@
     "downlevelIteration": true,
     "target": "es5",
     "module": "esnext",
-    "moduleResolution": "node",
-    "outDir": "dist/out-tsc"
+    "moduleResolution": "node"
   },
   "files": [
     "types/debug.d.ts",

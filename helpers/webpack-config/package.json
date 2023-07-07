@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "webpack 5 template",
-  "main": "index.js",
+  "main": "index.ts",
   "keywords": [],
   "author": "Hellcom",
   "license": "ISC"

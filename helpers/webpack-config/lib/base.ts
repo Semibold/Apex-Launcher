@@ -1,26 +1,28 @@
-const git = require('git-rev-sync');
-const path = require('path');
-const moment = require('moment');
+import git from 'git-rev-sync';
+import path from 'path';
+import moment from 'moment';
+import fs from 'fs';
+import webpack from 'webpack';
 
 /**
  * @desc Webpack/Custom Command Line Interface
  * @desc 在这里自定义变量
  */
-module.exports = class BaseDefaultConfig {
-    static get argv() {
+export default class BaseDefaultConfig {
+    static get argv(): Record<string, any> {
         return {
             mode: 'production',
             devtool: false,
         };
     }
 
-    static get env() {
+    static get env(): Record<string, any> {
         return {
             // Custom environment variables
         };
     }
 
-    static getEnvProxy(_env) {
+    static getEnvProxy(_env): Record<string, any> {
         return new Proxy(BaseDefaultConfig.env, {
             get(target, key, receiver) {
                 if (_env[key] != null) return _env[key];
@@ -29,7 +31,7 @@ module.exports = class BaseDefaultConfig {
         });
     }
 
-    static getArgvProxy(_argv) {
+    static getArgvProxy(_argv): Record<string, any> {
         return new Proxy(BaseDefaultConfig.argv, {
             get(target, key, receiver) {
                 if (_argv[key] != null) return _argv[key];
@@ -38,52 +40,58 @@ module.exports = class BaseDefaultConfig {
         });
     }
 
+    protected readonly _envProxy: Record<string, any>;
+    protected readonly _argvProxy: Record<string, any>;
+    protected readonly _manifest: Record<string, any>;
+    protected readonly _projectName: string;
+    protected readonly _lastCompiled: string;
+
     constructor(_env = Object.create(null), _argv = Object.create(null), projectName = null) {
         this._envProxy = BaseDefaultConfig.getEnvProxy(_env);
         this._argvProxy = BaseDefaultConfig.getArgvProxy(_argv);
-        this._manifest = require(path.resolve(process.cwd(), 'package.json'));
+        this._manifest = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'package.json'), { encoding: 'utf8' }));
         this._projectName = projectName;
         this._lastCompiled = moment().utcOffset(8).format();
     }
 
-    get env() {
+    get env(): Record<string, any> {
         return this._envProxy;
     }
 
-    get argv() {
+    get argv(): Record<string, any> {
         return this._argvProxy;
     }
 
-    get mode() {
+    get mode(): webpack.Configuration['mode'] {
         return this._argvProxy.mode;
     }
 
-    get devtool() {
+    get devtool(): webpack.Configuration['devtool'] {
         return this._argvProxy.devtool;
     }
 
-    get name() {
+    get name(): string {
         return this._projectName;
     }
 
-    get version() {
+    get version(): string {
         return this._manifest.version;
     }
 
-    get revision() {
+    get revision(): string {
         return git.short(null, 8);
     }
 
-    get lastCompiled() {
+    get lastCompiled(): string {
         return this._lastCompiled;
     }
 
-    get preamble() {
+    get preamble(): string {
         // prettier-ignore
         return `/*! @metadata ${this.name}: ${this.version}-${this.revision} (${this.lastCompiled}) */`;
     }
 
-    get production() {
+    get production(): boolean {
         return this._argvProxy.mode === 'production';
     }
-};
+}

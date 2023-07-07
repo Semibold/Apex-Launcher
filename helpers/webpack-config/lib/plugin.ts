@@ -1,8 +1,11 @@
-const webpack = require('webpack');
-const WebpackBar = require('webpackbar');
-const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin');
+import BaseDefaultConfig from './base';
+import webpack from 'webpack';
+import WebpackBar from 'webpackbar';
+import { RetryChunkLoadPlugin } from 'webpack-retry-chunk-load-plugin';
 
-module.exports = class BaseDefaultPlugin {
+export default class BaseDefaultPlugin {
+    protected readonly config: BaseDefaultConfig;
+
     constructor(config = Object.create(null)) {
         this.config = config;
     }
@@ -46,4 +49,4 @@ module.exports = class BaseDefaultPlugin {
             throw new Error('config.preamble is empty');
         }
     }
-};
+}

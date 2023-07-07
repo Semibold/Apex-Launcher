@@ -1,13 +1,17 @@
-const cssnano = require('cssnano');
-const postcssPresetEnv = require('postcss-preset-env');
-const postcssCustomProperties = require('postcss-custom-properties');
+import cssnano from 'cssnano';
+import postcssPresetEnv from 'postcss-preset-env';
+import postcssCustomProperties from 'postcss-custom-properties';
+import BaseDefaultConfig from './base';
+import webpack from 'webpack';
 
-module.exports = class BaseDefaultLoader {
+export default class BaseDefaultLoader {
+    protected readonly config: BaseDefaultConfig;
+
     constructor(config = Object.create(null)) {
         this.config = config;
     }
 
-    get tsLoader() {
+    get tsLoader(): webpack.RuleSetRule {
         return {
             test: /\.tsx?$/,
             use: [
@@ -24,7 +28,7 @@ module.exports = class BaseDefaultLoader {
         };
     }
 
-    get babelLoader() {
+    get babelLoader(): webpack.RuleSetRule {
         return {
             test: /\.jsx?$/,
             use: [
@@ -38,7 +42,7 @@ module.exports = class BaseDefaultLoader {
         };
     }
 
-    get esbuildLoader() {
+    get esbuildLoader(): webpack.RuleSetRule {
         return {
             test: /\.[jt]sx?$/,
             use: [
@@ -49,7 +53,7 @@ module.exports = class BaseDefaultLoader {
         };
     }
 
-    get lessLoader() {
+    get lessLoader(): webpack.RuleSetRule {
         const config = this.config;
 
         return {
@@ -87,7 +91,7 @@ module.exports = class BaseDefaultLoader {
         };
     }
 
-    get lessLazyLoader() {
+    get lessLazyLoader(): webpack.RuleSetRule {
         const config = this.config;
 
         return {
@@ -124,7 +128,7 @@ module.exports = class BaseDefaultLoader {
         };
     }
 
-    get svgLoader() {
+    get svgLoader(): webpack.RuleSetRule {
         return {
             test: /\.svg$/,
             use: [
@@ -154,18 +158,18 @@ module.exports = class BaseDefaultLoader {
         };
     }
 
-    get assetInline() {
+    get assetInline(): webpack.RuleSetRule {
         return {
             test: /\.(png|jpg|gif|woff)$/,
             type: 'asset/inline',
         };
     }
 
-    getScriptLoaders() {
+    getScriptLoaders(): webpack.RuleSetRule[] {
         if (this.config.production) {
             return [this.tsLoader, this.babelLoader];
         } else {
             return [this.esbuildLoader];
         }
     }
-};
+}

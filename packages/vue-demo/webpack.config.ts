@@ -1,11 +1,11 @@
-const path = require('path');
-const getWebpackConfig = require('@apex/webpack-config');
-const BaseDefaultLoader = require('@apex/webpack-config/lib/loader');
-const BaseDefaultPlugin = require('@apex/webpack-config/lib/plugin');
+import path from 'path';
+import getWebpackConfig from '@apex/webpack-config';
+import BaseDefaultLoader from '@apex/webpack-config/lib/loader';
+import BaseDefaultPlugin from '@apex/webpack-config/lib/plugin';
 
-const { VueLoaderPlugin } = require('vue-loader');
+import { VueLoaderPlugin } from 'vue-loader';
 
-module.exports = getWebpackConfig('vue-demo', function (env, argv, config) {
+export default getWebpackConfig('vue-demo', function (env, argv, config) {
     const baseLoader = new BaseDefaultLoader(config);
     const basePlugin = new BaseDefaultPlugin(config);
 

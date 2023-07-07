@@ -55,9 +55,6 @@ importers:
       '@types/webpack-bundle-analyzer':
         specifier: 4.6.0
         version: 4.6.0(webpack-cli@5.0.1)
-      '@types/webpack-dev-server':
-        specifier: 4.7.1
-        version: 4.7.1(webpack-cli@5.0.1)(webpack@5.79.0)
       '@typescript-eslint/eslint-plugin':
         specifier: 5.59.0
         version: 5.59.0(@typescript-eslint/parser@5.59.0)(eslint@8.38.0)(typescript@5.0.4)
@@ -157,6 +154,9 @@ importers:
       ts-loader:
         specifier: 9.4.2
         version: 9.4.2(typescript@5.0.4)(webpack@5.79.0)
+      ts-node:
+        specifier: 10.9.1
+        version: 10.9.1(@types/node@18.15.11)(typescript@5.0.4)
       tslib:
         specifier: 2.5.0
         version: 2.5.0
@@ -2854,19 +2854,6 @@ packages:
       - '@swc/core'
       - esbuild
       - uglify-js
-      - webpack-cli
-    dev: true
-
-  /@types/webpack-dev-server@4.7.1(webpack-cli@5.0.1)(webpack@5.79.0):
-    resolution: {integrity: sha512-T6UeAUQWojf1toimSIf6sBwaO4HQ4iHdF4BL2RbPbzKTqe5blB7Iih7i7h69NSg/fOjWlkdszNPlaWD1/aX5LQ==}
-    dependencies:
-      webpack-dev-server: 4.13.3(webpack-cli@5.0.1)(webpack@5.79.0)
-    transitivePeerDependencies:
-      - bufferutil
-      - debug
-      - supports-color
-      - utf-8-validate
-      - webpack
       - webpack-cli
     dev: true
 

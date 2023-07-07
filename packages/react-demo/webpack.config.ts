@@ -1,8 +1,8 @@
-const getWebpackConfig = require('@apex/webpack-config');
-const BaseDefaultLoader = require('@apex/webpack-config/lib/loader');
-const BaseDefaultPlugin = require('@apex/webpack-config/lib/plugin');
+import getWebpackConfig from '@apex/webpack-config';
+import BaseDefaultLoader from '@apex/webpack-config/lib/loader';
+import BaseDefaultPlugin from '@apex/webpack-config/lib/plugin';
 
-module.exports = getWebpackConfig('react-demo', function (env, argv, config) {
+export default getWebpackConfig('react-demo', function (env, argv, config) {
     const baseLoader = new BaseDefaultLoader(config);
     const basePlugin = new BaseDefaultPlugin(config);
 

@@ -1,14 +1,21 @@
-const git = require('git-rev-sync');
-const TerserPlugin = require('terser-webpack-plugin');
-const { merge } = require('webpack-merge');
+import git from 'git-rev-sync';
+import TerserPlugin from 'terser-webpack-plugin';
+import { merge } from 'webpack-merge';
 
-const BaseDefaultConfig = require('./lib/base');
+import BaseDefaultConfig from './lib/base';
+import webpack from 'webpack';
 
-module.exports = function getWebpackConfig(projectName, customWebpackFn) {
+export type WebpackConfigFactory = (
+    env: Record<string, any>,
+    argv: Record<string, any>,
+    config: BaseDefaultConfig,
+) => webpack.Configuration;
+
+export default function getWebpackConfig(projectName: string, customWebpackFn?: WebpackConfigFactory) {
     /**
      * @desc webpack config
      */
-    return function (_env, _argv) {
+    return function (_env: Record<string, any>, _argv: Record<string, any>) {
         const config = new BaseDefaultConfig(_env, _argv, projectName);
         const customWebpackConfig = customWebpackFn && customWebpackFn(config.env, config.argv, config);
 
@@ -16,7 +23,7 @@ module.exports = function getWebpackConfig(projectName, customWebpackFn) {
             `mode: ${config.mode}, devtool: ${config.devtool}; revision: ${config.revision}, branch: ${git.branch()}`,
         );
 
-        const defWebpackConfig = {
+        const defWebpackConfig: webpack.Configuration = {
             context: process.cwd(),
             mode: config.mode,
             devtool: config.devtool,
@@ -40,7 +47,7 @@ module.exports = function getWebpackConfig(projectName, customWebpackFn) {
                         extractComments: false,
                         terserOptions: {
                             ecma: 5,
-                            output: {
+                            format: {
                                 comments: /^!\s@metadata\s/,
                                 max_line_len: 8192,
                             },
@@ -52,4 +59,4 @@ module.exports = function getWebpackConfig(projectName, customWebpackFn) {
 
         return merge(defWebpackConfig, customWebpackConfig);
     };
-};
+}
