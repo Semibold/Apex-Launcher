@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "ts-node": {
+    "transpileOnly": true,
     "compilerOptions": {
       "module": "CommonJS"
     }
