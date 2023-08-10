@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import JetbrainsLogo from '../asset/jetbrains.svg';
+import { JetbrainsLogo } from '@apex/svg-project';
 import TimerView from './timer.view.vue';
 
 export default {

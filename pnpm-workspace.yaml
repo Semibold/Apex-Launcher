@@ -1,3 +1,4 @@
 packages:
-    - 'helpers/*'
-    - 'packages/*'
+  - 'apps/*'
+  - 'helpers/*'
+  - 'packages/*'

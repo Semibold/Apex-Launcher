@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot, Root } from 'react-dom/client';
 import { RootStore } from './store/root.store';
-import JetbrainsLogo from './asset/jetbrains.svg';
+import { JetbrainsLogo } from '@apex/svg-project';
 import { RootContext } from './context';
 import { TimerView } from './view/timer.view';
 
