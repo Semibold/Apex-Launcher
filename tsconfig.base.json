@@ -13,19 +13,12 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "importHelpers": true,
+    "noImplicitAny": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "downlevelIteration": true,
     "target": "es5",
     "module": "esnext",
     "moduleResolution": "node"
-  },
-  "files": [
-    "types/debug.d.ts",
-    "types/webpack.d.ts"
-  ],
-  "exclude": [
-    "**/dist/**/*",
-    "**/node_modules/**/*"
-  ]
+  }
 }

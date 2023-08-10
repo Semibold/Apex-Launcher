@@ -1,0 +1,9 @@
+{
+  "name": "@apex/js-project",
+  "version": "1.0.0",
+  "description": "Fake JavaScript Project without Types",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Hellcom",
+  "license": "ISC"
+}

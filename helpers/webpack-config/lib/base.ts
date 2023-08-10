@@ -22,7 +22,7 @@ export default class BaseDefaultConfig {
         };
     }
 
-    static getEnvProxy(_env): Record<string, any> {
+    static getEnvProxy(_env: any): Record<string, any> {
         return new Proxy(BaseDefaultConfig.env, {
             get(target, key, receiver) {
                 if (_env[key] != null) return _env[key];
@@ -31,7 +31,7 @@ export default class BaseDefaultConfig {
         });
     }
 
-    static getArgvProxy(_argv): Record<string, any> {
+    static getArgvProxy(_argv: any): Record<string, any> {
         return new Proxy(BaseDefaultConfig.argv, {
             get(target, key, receiver) {
                 if (_argv[key] != null) return _argv[key];
@@ -46,7 +46,7 @@ export default class BaseDefaultConfig {
     protected readonly _projectName: string;
     protected readonly _lastCompiled: string;
 
-    constructor(_env = Object.create(null), _argv = Object.create(null), projectName = null) {
+    constructor(_env = Object.create(null), _argv = Object.create(null), projectName: string = null) {
         this._envProxy = BaseDefaultConfig.getEnvProxy(_env);
         this._argvProxy = BaseDefaultConfig.getArgvProxy(_argv);
         this._manifest = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'package.json'), { encoding: 'utf8' }));

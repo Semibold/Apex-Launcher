@@ -52,7 +52,7 @@ export default getWebpackConfig('vue-demo', function (env, argv, config) {
         plugins: [basePlugin.webpackBar, basePlugin.bannerPlugin, basePlugin.definePlugin, new VueLoaderPlugin()],
         output: {
             // @see https://github.com/vuejs/vue-cli/issues/2978#issuecomment-1204992527
-            devtoolModuleFilenameTemplate: (info) => {
+            devtoolModuleFilenameTemplate: (info: any) => {
                 const resPath = info.resourcePath.split(path.sep).join('/');
                 const isVue = resPath.match(/\.vue$/);
                 const isGenerated = info.allLoaders;

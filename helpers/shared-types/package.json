@@ -1,0 +1,10 @@
+{
+  "name": "@types/shared-types",
+  "version": "1.0.0",
+  "private": true,
+  "types": "index.d.ts",
+  "description": "Shared Types for Project",
+  "keywords": [],
+  "author": "Hellcom",
+  "license": "ISC"
+}
