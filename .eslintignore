@@ -191,3 +191,4 @@ dist-*
 # Generated File
 yarn.lock
 package-lock.json
+*.d.ts
