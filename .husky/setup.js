@@ -1,1 +1,1 @@
-!require(`ci-info`).isCI && require(`husky`).install();
+!require('ci-info').isCI && require('husky').install();

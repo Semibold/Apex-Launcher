@@ -28,20 +28,6 @@ export default class BaseDefaultLoader {
         };
     }
 
-    get babelLoader(): webpack.RuleSetRule {
-        return {
-            test: /\.jsx?$/,
-            use: [
-                {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
-                    },
-                },
-            ],
-        };
-    }
-
     get esbuildLoader(): webpack.RuleSetRule {
         return {
             test: /\.[jt]sx?$/,
@@ -167,7 +153,7 @@ export default class BaseDefaultLoader {
 
     getScriptLoaders(): webpack.RuleSetRule[] {
         if (this.config.production) {
-            return [this.tsLoader, this.babelLoader];
+            return [this.tsLoader];
         } else {
             return [this.esbuildLoader];
         }
