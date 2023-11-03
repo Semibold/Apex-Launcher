@@ -1,5 +1,5 @@
-import { TimerCom } from '../gallery/timer.com';
-import { useStore } from '../context';
+import { TimerAtom } from '../atom/Timer.Atom';
+import { useStore } from '../../context';
 import { observer } from 'mobx-react-lite';
 
 interface ITimeViewProps {
@@ -11,7 +11,8 @@ interface ITimeViewProps {
  * @desc View with Store (Cannot reuse without same store)
  */
 export const TimerView = observer((props: ITimeViewProps) => {
+    // App store (Mobx)
     const { timerStore } = useStore();
 
-    return <TimerCom timePassed={timerStore.timePassed} {...props} />;
+    return <TimerAtom timePassed={timerStore.timePassed} {...props} />;
 });

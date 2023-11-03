@@ -1,6 +1,9 @@
 import { makeAutoObservable } from 'mobx';
-import { RootStore } from './root.store';
+import { RootStore } from '../root.store';
 
+/**
+ * @desc App Store
+ */
 export class TimerStore {
     timePassed = 0;
 
