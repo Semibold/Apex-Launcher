@@ -4,4 +4,4 @@
 |------------------|---------------------------------------------------------|
 | Local            | Component private state                                 |
 | App (Instance)   | App shared state (Partial shared or App shared)         |
-| Global (Sington) | Global state for multi app instances and all components |
+| Global (Singeton) | Global state for multi app instances and all components |
