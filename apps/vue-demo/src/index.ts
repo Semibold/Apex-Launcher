@@ -1,25 +1,21 @@
-import App from './app';
+import { createVueApp } from './app';
 
-function getCustomNode(text: string) {
-    const span = document.createElement('span');
-    span.textContent = text;
-    return span;
+function getElementById(id: string) {
+    return document.getElementById(id) as HTMLElement;
 }
 
-const app1Container = document.getElementById('app1');
-const app2Container = document.getElementById('app2');
-const app3Container = document.getElementById('app3');
+const app1Container = getElementById('app1');
+const app2Container = getElementById('app2');
 
-const app1 = new App(app1Container);
-const app2 = new App(app2Container, 2);
-const app3 = new App(app3Container, 3, getCustomNode('(app3)'));
+const disposeApp1 = createVueApp(app1Container);
+const disposeApp2 = createVueApp(app2Container);
 
 setTimeout(() => {
-    app3.dispose();
-    console.log('[debug] app3 has been disposed');
+    disposeApp2();
+    console.log('[debug] app2 has been disposed');
 
     setTimeout(() => {
-        new App(app3Container, 4, getCustomNode('(app3 with rate=4)'));
-        console.log('[debug] re-render app3 with rate=4');
+        createVueApp(app2Container);
+        console.log('[debug] re-render app2');
     }, 2000);
 }, 4000);

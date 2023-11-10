@@ -12,8 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "@apex/svg-project": "workspace:*",
-    "pinia": "2.0.34",
-    "vue": "3.2.47",
-    "vue-loader": "17.0.1"
+    "pinia": "2.1.7",
+    "vue": "3.3.8"
+  },
+  "devDependencies": {
+    "@apex/webpack-config": "workspace:*",
+    "vue-loader": "17.3.1",
+    "webpack-cli": "5.1.4"
   }
 }

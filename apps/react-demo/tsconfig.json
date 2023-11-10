@@ -1,6 +1,11 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "react-jsx"
-  }
+    "jsx": "react-jsx",
+    "outDir": ".ts-build"
+  },
+  "references": [
+    { "path": "../../helpers/webpack-config" },
+    { "path": "../../packages/svg-project" }
+  ]
 }

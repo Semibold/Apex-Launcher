@@ -19,6 +19,7 @@ export default class BaseDefaultLoader {
                     loader: 'ts-loader',
                     options: {
                         transpileOnly: !this.config.production,
+                        projectReferences: true,
                         compilerOptions: {
                             module: 'esnext',
                         },

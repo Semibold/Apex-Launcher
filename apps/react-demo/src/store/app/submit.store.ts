@@ -4,14 +4,14 @@ import { RootStore } from '../root.store';
 /**
  * @desc App Store
  */
-export class TimerStore {
-    timePassed = 0;
+export class SubmitStore {
+    submitted = false;
 
     constructor(readonly rootStore: RootStore) {
         makeAutoObservable(this);
     }
 
-    increaseTimer(rate = 1) {
-        this.timePassed += rate;
+    toggle() {
+        this.submitted = !this.submitted;
     }
 }

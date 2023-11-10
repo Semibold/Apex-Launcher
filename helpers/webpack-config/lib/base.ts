@@ -46,7 +46,7 @@ export default class BaseDefaultConfig {
     protected readonly _projectName: string;
     protected readonly _lastCompiled: string;
 
-    constructor(_env = Object.create(null), _argv = Object.create(null), projectName: string = null) {
+    constructor(_env = Object.create(null), _argv = Object.create(null), projectName: string = '') {
         this._envProxy = BaseDefaultConfig.getEnvProxy(_env);
         this._argvProxy = BaseDefaultConfig.getArgvProxy(_argv);
         this._manifest = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'package.json'), { encoding: 'utf8' }));
@@ -79,7 +79,7 @@ export default class BaseDefaultConfig {
     }
 
     get revision(): string {
-        return git.short(null, 8);
+        return git.short(undefined, 8);
     }
 
     get lastCompiled(): string {

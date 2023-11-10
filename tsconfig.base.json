@@ -8,17 +8,18 @@
     }
   },
   "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
     "pretty": true,
-    "strict": false,
+    "strict": true,
     "sourceMap": true,
     "skipLibCheck": true,
     "importHelpers": true,
-    "noImplicitAny": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "downlevelIteration": true,
-    "target": "es5",
-    "module": "esnext",
+    "target": "ES2016",
+    "module": "ESNext",
     "moduleResolution": "node"
   }
 }

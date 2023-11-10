@@ -7,5 +7,9 @@
       "esnext",
       "scripthost"
     ]
-  }
+  },
+  "references": [
+    { "path": "./helpers/webpack-config" },
+    { "path": "./packages/svg-project" }
+  ]
 }

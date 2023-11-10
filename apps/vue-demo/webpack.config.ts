@@ -1,11 +1,9 @@
 import path from 'path';
-import getWebpackConfig from '@apex/webpack-config';
-import BaseDefaultLoader from '@apex/webpack-config/lib/loader';
-import BaseDefaultPlugin from '@apex/webpack-config/lib/plugin';
+import { createWebpackConfig, BaseDefaultLoader, BaseDefaultPlugin } from '@apex/webpack-config';
 
 import { VueLoaderPlugin } from 'vue-loader';
 
-export default getWebpackConfig('vue-demo', function (env, argv, config) {
+export default createWebpackConfig('vue-demo', function (env, argv, config) {
     const baseLoader = new BaseDefaultLoader(config);
     const basePlugin = new BaseDefaultPlugin(config);
 
@@ -28,6 +26,7 @@ export default getWebpackConfig('vue-demo', function (env, argv, config) {
                                   options: {
                                       appendTsSuffixTo: [/\.vue$/],
                                       transpileOnly: !config.production,
+                                      projectReferences: true,
                                       compilerOptions: { module: 'esnext' },
                                   },
                               },

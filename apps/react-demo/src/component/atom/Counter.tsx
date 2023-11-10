@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 /**
  * @desc Pure React Component (Can reuse in other project)
@@ -7,9 +7,10 @@ import { useEffect, useState } from 'react';
  *      The useEffect hook is used to execute a timer that increments the count variable every second.
  *      The component renders a paragraph element displaying the current value of count.
  */
-export const CounterAtom = () => {
+export const Counter = () => {
+    const initValue = useMemo(() => Math.round(Math.random() * 10), []);
     // Local state (React)
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(initValue);
 
     // Local counter
     useEffect(() => {
@@ -17,5 +18,9 @@ export const CounterAtom = () => {
         return () => clearInterval(timerId);
     }, []);
 
-    return <p>Local counter: {count} tick</p>;
+    return (
+        <p>
+            Initial value: {initValue}. Local counter: {count} tick (Component Level)
+        </p>
+    );
 };
