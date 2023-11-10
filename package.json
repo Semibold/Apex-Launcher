@@ -7,8 +7,9 @@
     "prepare": "node ./.husky/setup.js",
     "husky:pre-commit": "lint-staged",
     "husky:commit-msg": "commitlint --edit ${1}",
-    "test": "pnpm run eslint && pnpm run tscheck",
+    "test": "pnpm run build:references && pnpm run eslint && pnpm run tscheck",
     "eslint": "eslint '**/*.{js,jsx,ts,tsx}' --quiet",
+    "build:references": "tsc --build",
     "tscheck": "pnpm -r --parallel exec tsc --noEmit",
     "tscheck:whole": "tsc --noEmit"
   },
