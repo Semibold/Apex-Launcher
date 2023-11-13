@@ -3,8 +3,8 @@
   "ts-node": {
     "transpileOnly": true,
     "compilerOptions": {
-      "module": "CommonJS",
-      "target": "ESNext"
+      "target": "ESNext",
+      "module": "CommonJS"
     }
   },
   "compilerOptions": {
@@ -12,13 +12,13 @@
     "composite": true,
     "declaration": true,
     "declarationMap": true,
-    "pretty": true,
     "strict": true,
     "sourceMap": true,
     "skipLibCheck": true,
     "importHelpers": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "useDefineForClassFields": true,
     "target": "ES2016",
     "module": "ESNext",
     "moduleResolution": "node"
