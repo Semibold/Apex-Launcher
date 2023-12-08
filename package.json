@@ -31,7 +31,7 @@
     "not ie 6-11"
   ],
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,vue,md}": "prettier --write"
+    "**/*": "prettier --write --ignore-unknown"
   },
   "publishConfig": {
     "access": "public",
