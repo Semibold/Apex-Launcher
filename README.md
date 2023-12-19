@@ -15,5 +15,5 @@
 
 See README
 
--   `apps/react-demo/README.md`
--   `apps/vue-demo/README.md`
+-   apps/react-demo/README.md
+-   apps/vue-demo/README.md
