@@ -18,5 +18,13 @@ module.exports = {
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-unused-vars': 1,
+
+        'vue/block-lang': [
+            'error',
+            {
+                script: { lang: 'ts', allowNoLang: false },
+            },
+        ],
+        'vue/component-api-style': ['error', ['script-setup']],
     },
 };
