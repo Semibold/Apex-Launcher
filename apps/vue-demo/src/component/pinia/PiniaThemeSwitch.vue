@@ -1,12 +1,12 @@
 <template>
-    <button @click="toggleTheme">Switch Theme</button>
+    <button @click="themeStore.toggle()">Switch Theme</button>
 </template>
 
 <script setup lang="ts">
-import { themeStore } from '../../store/global/theme.store';
+import { useThemeStore } from '../../store/global/theme.store';
 import { watch } from 'vue';
 
-const toggleTheme = () => themeStore.toggle();
+const themeStore = useThemeStore();
 
 watch(
     () => themeStore.theme,
