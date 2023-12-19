@@ -1,4 +1,4 @@
-import './style/global.less';
+import './style/global.css';
 import RootView from './component/RootView.vue';
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';

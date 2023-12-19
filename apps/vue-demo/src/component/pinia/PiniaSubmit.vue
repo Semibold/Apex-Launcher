@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Submit from '../atom/Submit.vue';
+import SubmitAtom from '../atom/SubmitAtom.vue';
 import { useSubmitStore } from '../../store/app/submit.store';
 
 const submitStore = useSubmitStore();
@@ -10,5 +10,5 @@ const onClick = () => {
 </script>
 
 <template>
-    <Submit :submitted="submitStore.submitted" @click="onClick" />
+    <SubmitAtom :submitted="submitStore.submitted" @click="onClick" />
 </template>

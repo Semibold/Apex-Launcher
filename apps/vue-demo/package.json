@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "dev": "vite",
     "build": "webpack --mode=production",
     "start": "webpack --mode=development --devtool=eval-cheap-module-source-map",
     "serve": "webpack serve --mode=development --devtool=eval-cheap-module-source-map"
@@ -17,6 +18,9 @@
   },
   "devDependencies": {
     "@apex/webpack-config": "workspace:*",
+    "@vitejs/plugin-vue": "4.5.2",
+    "vite": "5.0.10",
+    "vite-svg-loader": "5.1.0",
     "vue-loader": "17.3.1",
     "webpack-cli": "5.1.4"
   }

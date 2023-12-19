@@ -1,6 +1,6 @@
 <template>
     <p>
-        <button @click="onClick" :disabled="submitted">Submit Button (App Level)</button>
+        <button @click="emits('click')" :disabled="props.submitted">Submit Button (App Level)</button>
     </p>
 </template>
 
@@ -17,6 +17,4 @@ interface IEmits {
 
 const props = defineProps<IProps>();
 const emits = defineEmits<IEmits>();
-const onClick = () => emits('click');
-const { submitted } = toRefs(props);
 </script>
