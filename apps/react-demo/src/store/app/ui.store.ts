@@ -10,4 +10,4 @@ class UiStore {
     }
 }
 
-export const useUiStore = defineStore('ui', UiStore);
+export const useUiStore = defineStore(UiStore);

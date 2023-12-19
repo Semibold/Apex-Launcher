@@ -19,6 +19,6 @@ class ThemeStore {
 /**
  * Shared for Global Store
  */
-const globalContextValue = new Map<string, unknown>();
+const globalContextValue = new Map<object, unknown>();
 
-export const useThemeStore = () => defineStore('theme', ThemeStore)(globalContextValue);
+export const useThemeStore = () => defineStore(ThemeStore)(globalContextValue);

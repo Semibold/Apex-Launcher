@@ -1,3 +1,3 @@
 import { createContext } from 'react';
 
-export const RootContext = createContext<Map<string, unknown> | null>(null);
+export const RootContext = createContext<Map<object, unknown> | null>(null);

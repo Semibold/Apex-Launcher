@@ -8,10 +8,10 @@ import { RootContext } from './store/context';
 
 export function createReactApp(container: HTMLElement, node?: HTMLElement) {
     const root = createRoot(container);
-    const rootValue = new Map<string, unknown>();
+    const rootMap = new Map<object, unknown>();
 
     root.render(
-        <RootContext.Provider value={rootValue}>
+        <RootContext.Provider value={rootMap}>
             <Section />
             <Section />
             <p style={{ width: 128 }} dangerouslySetInnerHTML={{ __html: JetbrainsLogo }} />
@@ -19,5 +19,8 @@ export function createReactApp(container: HTMLElement, node?: HTMLElement) {
         </RootContext.Provider>,
     );
 
-    return () => root.unmount();
+    return () => {
+        rootMap.clear();
+        root.unmount();
+    };
 }

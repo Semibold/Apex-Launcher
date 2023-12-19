@@ -16,4 +16,4 @@ class SubmitStore {
     }
 }
 
-export const useSubmitStore = defineStore('submit', SubmitStore);
+export const useSubmitStore = defineStore(SubmitStore);
