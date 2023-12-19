@@ -183,3 +183,9 @@ pip-log.txt
 ## MISC
 #################
 .ts-build
+
+#################
+## MISC
+#################
+.env.local
+.env.*.local

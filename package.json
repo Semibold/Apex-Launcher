@@ -2,13 +2,13 @@
   "name": "apex-launcher",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@8.10.2",
+  "packageManager": "pnpm@8.12.0",
   "scripts": {
     "prepare": "node ./.husky/setup.js",
     "husky:pre-commit": "lint-staged",
     "husky:commit-msg": "commitlint --edit ${1}",
     "test": "pnpm run build:references && pnpm run eslint && pnpm run tscheck",
-    "eslint": "eslint '**/*.{js,jsx,ts,tsx}' --quiet",
+    "eslint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --quiet",
     "build:references": "tsc --build",
     "tscheck": "pnpm -r --parallel exec tsc --noEmit",
     "tscheck:whole": "tsc --noEmit"
@@ -49,6 +49,7 @@
     "dotenv": "16.3.1",
     "eslint": "8.53.0",
     "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-vue": "9.19.2",
     "husky": "8.0.3",
     "lint-staged": "15.0.2",
     "npm-check-updates": "16.14.6",
@@ -56,6 +57,7 @@
     "rimraf": "5.0.5",
     "ts-node": "10.9.1",
     "tslib": "2.6.2",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "vue-eslint-parser": "9.3.2"
   }
 }
