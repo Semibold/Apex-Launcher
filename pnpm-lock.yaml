@@ -110,29 +110,20 @@ importers:
         version: link:../../packages/svg-project
       pinia:
         specifier: 2.1.7
-        version: 2.1.7(typescript@5.2.2)(vue@3.3.8)
+        version: 2.1.7(vue@3.3.8)
       vue:
         specifier: 3.3.8
-        version: 3.3.8(typescript@5.2.2)
+        version: 3.3.8
     devDependencies:
-      '@apex/webpack-config':
-        specifier: workspace:*
-        version: link:../../helpers/webpack-config
       '@vitejs/plugin-vue':
         specifier: 4.5.2
         version: 4.5.2(vite@5.0.10)(vue@3.3.8)
       vite:
         specifier: 5.0.10
-        version: 5.0.10(@types/node@20.8.10)
+        version: 5.0.10
       vite-svg-loader:
         specifier: 5.1.0
         version: 5.1.0(vue@3.3.8)
-      vue-loader:
-        specifier: 17.3.1
-        version: 17.3.1(vue@3.3.8)(webpack@5.89.0)
-      webpack-cli:
-        specifier: 5.1.4
-        version: 5.1.4(webpack@5.89.0)
 
   helpers/shared-types: {}
 
@@ -2109,8 +2100,8 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.0.10(@types/node@20.8.10)
-      vue: 3.3.8(typescript@5.2.2)
+      vite: 5.0.10
+      vue: 3.3.8
     dev: true
 
   /@vue/compiler-core@3.3.8:
@@ -2185,7 +2176,7 @@ packages:
     dependencies:
       '@vue/compiler-ssr': 3.3.8
       '@vue/shared': 3.3.8
-      vue: 3.3.8(typescript@5.2.2)
+      vue: 3.3.8
 
   /@vue/shared@3.3.8:
     resolution: {integrity: sha512-8PGwybFwM4x8pcfgqEQFy70NaQxASvOC5DJwLQfpArw1UDfUXrJkdxD3BhVTMS+0Lef/TU7YO0Jvr0jJY8T+mw==}
@@ -4595,10 +4586,6 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /hash-sum@2.0.0:
-    resolution: {integrity: sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==}
-    dev: true
-
   /hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
     dev: true
@@ -6484,7 +6471,7 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /pinia@2.1.7(typescript@5.2.2)(vue@3.3.8):
+  /pinia@2.1.7(vue@3.3.8):
     resolution: {integrity: sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
@@ -6497,8 +6484,7 @@ packages:
         optional: true
     dependencies:
       '@vue/devtools-api': 6.5.0
-      typescript: 5.2.2
-      vue: 3.3.8(typescript@5.2.2)
+      vue: 3.3.8
       vue-demi: 0.14.6(vue@3.3.8)
     dev: false
 
@@ -8532,6 +8518,7 @@ packages:
     resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: true
 
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
@@ -8689,10 +8676,10 @@ packages:
       vue: '>=3.2.13'
     dependencies:
       svgo: 3.0.2
-      vue: 3.3.8(typescript@5.2.2)
+      vue: 3.3.8
     dev: true
 
-  /vite@5.0.10(@types/node@20.8.10):
+  /vite@5.0.10:
     resolution: {integrity: sha512-2P8J7WWgmc355HUMlFrwofacvr98DAjoE52BfdbwQtyLH06XKwaL/FMnmKM2crF0iX4MpmMKoDlNCB1ok7zHCw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -8720,7 +8707,6 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.8.10
       esbuild: 0.19.5
       postcss: 8.4.32
       rollup: 4.9.1
@@ -8740,7 +8726,7 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      vue: 3.3.8(typescript@5.2.2)
+      vue: 3.3.8
     dev: false
 
   /vue-eslint-parser@9.3.2(eslint@8.53.0):
@@ -8761,26 +8747,7 @@ packages:
       - supports-color
     dev: true
 
-  /vue-loader@17.3.1(vue@3.3.8)(webpack@5.89.0):
-    resolution: {integrity: sha512-nmVu7KU8geOyzsStyyaxID/uBGDMS8BkPXb6Lu2SNkMawriIbb+hYrNtgftHMKxOSkjjjTF5OSSwPo3KP59egg==}
-    peerDependencies:
-      '@vue/compiler-sfc': '*'
-      vue: '*'
-      webpack: ^4.1.0 || ^5.0.0-0
-    peerDependenciesMeta:
-      '@vue/compiler-sfc':
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      chalk: 4.1.2
-      hash-sum: 2.0.0
-      vue: 3.3.8(typescript@5.2.2)
-      watchpack: 2.4.0
-      webpack: 5.89.0(webpack-cli@5.1.4)
-    dev: true
-
-  /vue@3.3.8(typescript@5.2.2):
+  /vue@3.3.8:
     resolution: {integrity: sha512-5VSX/3DabBikOXMsxzlW8JyfeLKlG9mzqnWgLQLty88vdZL7ZJgrdgBOmrArwxiLtmS+lNNpPcBYqrhE6TQW5w==}
     peerDependencies:
       typescript: '*'
@@ -8793,7 +8760,6 @@ packages:
       '@vue/runtime-dom': 3.3.8
       '@vue/server-renderer': 3.3.8(vue@3.3.8)
       '@vue/shared': 3.3.8
-      typescript: 5.2.2
 
   /watchpack@2.4.0:
     resolution: {integrity: sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg==}
