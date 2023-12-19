@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import { defineStore } from '../defineStore';
 
 /**
  * @desc Global Store (Singleton)
@@ -15,4 +16,9 @@ class ThemeStore {
     }
 }
 
-export const themeStore = new ThemeStore();
+/**
+ * Shared for Global Store
+ */
+const globalContextValue = new Map<string, unknown>();
+
+export const useThemeStore = () => defineStore('theme', ThemeStore)(globalContextValue);

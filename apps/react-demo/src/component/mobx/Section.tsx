@@ -11,7 +11,7 @@ export const Section = () => {
             {/* It's a memo component */}
             <Heading />
 
-            {/* It's a pure react component */}
+            {/* It's a pure React component */}
             {/* DON'T USE THIS in Mobx, it's only a demo */}
             {/* Wrap it with Mobx.observer if you want to use it in mobx environment */}
             <Counter />

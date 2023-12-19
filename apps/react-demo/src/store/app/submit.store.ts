@@ -1,13 +1,13 @@
 import { makeAutoObservable } from 'mobx';
-import { RootStore } from '../root.store';
+import { defineStore } from '../defineStore';
 
 /**
  * @desc App Store
  */
-export class SubmitStore {
+class SubmitStore {
     submitted = false;
 
-    constructor(readonly rootStore: RootStore) {
+    constructor() {
         makeAutoObservable(this);
     }
 
@@ -15,3 +15,5 @@ export class SubmitStore {
         this.submitted = !this.submitted;
     }
 }
+
+export const useSubmitStore = defineStore('submit', SubmitStore);

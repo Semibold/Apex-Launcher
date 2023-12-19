@@ -1,11 +1,13 @@
-import { RootStore } from '../root.store';
 import { makeAutoObservable } from 'mobx';
+import { defineStore } from '../defineStore';
 
 /**
  * @desc App Store
  */
-export class UiStore {
-    constructor(readonly rootStore: RootStore) {
+class UiStore {
+    constructor() {
         makeAutoObservable(this);
     }
 }
+
+export const useUiStore = defineStore('ui', UiStore);

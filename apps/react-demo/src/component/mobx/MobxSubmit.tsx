@@ -1,14 +1,14 @@
-import { useStore } from '../../context';
 import { observer } from 'mobx-react-lite';
 import { Submit } from '../atom/Submit';
 import { useCallback } from 'react';
+import { useSubmitStore } from '../../store/app/submit.store';
 
 /**
  * @desc View with Store (Cannot reuse without same store)
  */
 export const MobxSubmit = observer(() => {
     // App store (Mobx)
-    const { submitStore } = useStore();
+    const submitStore = useSubmitStore();
     const onClick = useCallback(() => {
         submitStore.toggle();
         setTimeout(() => submitStore.toggle(), 3000);
