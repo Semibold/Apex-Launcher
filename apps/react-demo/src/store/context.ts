@@ -1,3 +1,6 @@
 import { createContext } from 'react';
 
-export const RootContext = createContext<Map<object, unknown> | null>(null);
+export type RootContextPointer = NonNullable<RootContextNullablePointer>;
+export type RootContextNullablePointer = Map<unknown, unknown> | null;
+
+export const RootContext = createContext<RootContextNullablePointer>(null);

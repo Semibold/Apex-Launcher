@@ -1,7 +1,7 @@
 import { createPinia, defineStore } from 'pinia';
 
 /** 这是全局实例，不需要使用 App.use() 注入 */
-const GLOBAL_REF = createPinia();
+const GLOBAL_CONTEXT_POINTER = createPinia();
 
 export const useThemeStore = () =>
     defineStore('theme', {
@@ -11,4 +11,4 @@ export const useThemeStore = () =>
                 this.theme = this.theme === 'light' ? 'dark' : 'light';
             },
         },
-    })(GLOBAL_REF);
+    })(GLOBAL_CONTEXT_POINTER);

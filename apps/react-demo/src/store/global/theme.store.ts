@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { defineStore } from '../defineStore';
+import { RootContextPointer } from '../context';
 
 /**
  * @desc Global Store (Singleton)
@@ -7,7 +8,7 @@ import { defineStore } from '../defineStore';
 class ThemeStore {
     theme = 'light';
 
-    constructor() {
+    constructor(readonly pointer: RootContextPointer) {
         makeAutoObservable(this);
     }
 
@@ -19,6 +20,6 @@ class ThemeStore {
 /**
  * Shared for Global Store
  */
-const globalContextValue = new Map<object, unknown>();
+const GLOBAL_CONTEXT_POINTER: RootContextPointer = new Map();
 
-export const useThemeStore = () => defineStore(ThemeStore)(globalContextValue);
+export const useThemeStore = () => defineStore(ThemeStore)(GLOBAL_CONTEXT_POINTER);

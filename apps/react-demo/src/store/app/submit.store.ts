@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { defineStore } from '../defineStore';
+import { RootContextPointer } from '../context';
 
 /**
  * @desc App Store
@@ -7,7 +8,7 @@ import { defineStore } from '../defineStore';
 class SubmitStore {
     submitted = false;
 
-    constructor() {
+    constructor(readonly pointer: RootContextPointer) {
         makeAutoObservable(this);
     }
 

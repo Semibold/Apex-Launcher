@@ -1,11 +1,12 @@
 import { makeAutoObservable } from 'mobx';
 import { defineStore } from '../defineStore';
+import { RootContextPointer } from '../context';
 
 /**
  * @desc App Store
  */
 class UiStore {
-    constructor() {
+    constructor(readonly pointer: RootContextPointer) {
         makeAutoObservable(this);
     }
 }
