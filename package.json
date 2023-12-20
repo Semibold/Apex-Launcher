@@ -10,8 +10,7 @@
     "test": "pnpm run build:references && pnpm run eslint && pnpm run tscheck",
     "eslint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --quiet",
     "build:references": "tsc --build",
-    "tscheck": "pnpm -r --parallel exec tsc --noEmit",
-    "tscheck:whole": "tsc --noEmit"
+    "tscheck": "pnpm -r --parallel exec tsc --noEmit"
   },
   "repository": {
     "type": "git",

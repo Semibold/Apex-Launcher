@@ -1,10 +1,14 @@
-**/.ts-build
+**/tmp
+**/temp
 **/dist
-**/release
 **/coverage
-**/node_modules
-**/CHANGELOG.md
 
-# ignore specific format
-**/*.json
+# ignore lockfile
+package-lock.json
 pnpm-lock.yaml
+yarn.lock
+
+# ignore misc file
+**/*.min.js
+**/*.min.css
+**/*.json
