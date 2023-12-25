@@ -11,7 +11,14 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:vue/vue3-recommended', 'prettier'],
+    extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:react/recommended',
+        'plugin:react/jsx-runtime',
+        'plugin:vue/vue3-recommended',
+        'prettier',
+    ],
     plugins: ['@typescript-eslint'],
     rules: {
         'no-undef': 'off',

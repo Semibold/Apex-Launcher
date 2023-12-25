@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
 import { useThemeStore } from '../../store/global/theme.store';
 
-export const MobxThemeSwitch = observer(() => {
+export const MobxThemeSwitch = observer(function InMobxThemeSwitch() {
     const themeStore = useThemeStore();
 
     useEffect(() => {
