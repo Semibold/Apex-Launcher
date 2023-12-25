@@ -11,6 +11,11 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
+    settings: {
+        react: {
+            version: '18',
+        },
+    },
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
