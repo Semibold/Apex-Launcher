@@ -6,7 +6,7 @@ import { useSubmitStore } from '../../store/app/submit.store';
 /**
  * @desc View with Store (Cannot reuse without same store)
  */
-export const MobxSubmit = observer(function InMobxSubmit() {
+export const MobxSubmit = observer(function MobxSubmit() {
     // App store (Mobx)
     const submitStore = useSubmitStore();
     const onClick = useCallback(() => {
