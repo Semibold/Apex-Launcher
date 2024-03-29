@@ -1,4 +1,8 @@
-import { useEffect, useMemo, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useState } from 'react';
+
+export interface ICounterRef {
+    add(x: number): void;
+}
 
 /**
  * @desc Pure React Component (Can reuse in other project)
@@ -7,10 +11,23 @@ import { useEffect, useMemo, useState } from 'react';
  *      The useEffect hook is used to execute a timer that increments the count variable every second.
  *      The component renders a paragraph element displaying the current value of count.
  */
-export const Counter = () => {
+export const Counter = forwardRef<ICounterRef>((props, ref) => {
     const initValue = useMemo(() => Math.round(Math.random() * 10), []);
     // Local state (React)
     const [count, setCount] = useState(initValue);
+
+    // Expose methods
+    useImperativeHandle(
+        ref,
+        () => {
+            return {
+                add(x: number) {
+                    setCount((n) => n + x);
+                },
+            };
+        },
+        [],
+    );
 
     // Local counter
     useEffect(() => {
@@ -23,4 +40,4 @@ export const Counter = () => {
             Initial value: {initValue}. Local counter: {count} tick (Component Level)
         </p>
     );
-};
+});
