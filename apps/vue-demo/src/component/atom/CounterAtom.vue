@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, reactive } from 'vue';
+import { ICounterRef } from '../types';
 
 let initValue = Math.round(Math.random() * 10);
 let timer: number = -1;
@@ -13,6 +14,12 @@ onMounted(() => {
     timer = window.setInterval(() => {
         data.count++;
     }, 1000);
+});
+
+defineExpose<ICounterRef>({
+    add(x: number) {
+        data.count += x;
+    },
 });
 
 onUnmounted(() => {
