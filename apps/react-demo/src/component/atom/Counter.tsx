@@ -11,7 +11,7 @@ export interface ICounterRef {
  *      The useEffect hook is used to execute a timer that increments the count variable every second.
  *      The component renders a paragraph element displaying the current value of count.
  */
-export const Counter = forwardRef<ICounterRef>((props, ref) => {
+export const Counter = forwardRef<ICounterRef>(function Counter(props, ref) {
     const initValue = useMemo(() => Math.round(Math.random() * 10), []);
     // Local state (React)
     const [count, setCount] = useState(initValue);
