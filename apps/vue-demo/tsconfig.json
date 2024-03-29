@@ -4,7 +4,7 @@
     "outDir": ".ts-build"
   },
   "references": [
-    { "path": "../../helpers/webpack-config" },
-    { "path": "../../packages/svg-project" }
+    { "path": "../../helpers/webpack-config/tsconfig.json" },
+    { "path": "../../packages/svg-project/tsconfig.json" }
   ]
 }
