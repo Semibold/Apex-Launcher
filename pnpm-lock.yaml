@@ -87,6 +87,9 @@ importers:
       '@apex/webpack-config':
         specifier: workspace:*
         version: link:../../helpers/webpack-config
+      '@types/css-modules':
+        specifier: 1.0.5
+        version: 1.0.5
       '@types/react':
         specifier: 18.2.37
         version: 18.2.37
@@ -1708,6 +1711,10 @@ packages:
     resolution: {integrity: sha512-loB369iXNmAZglwWATL+WRe+CRMmmBPtpolYzIebFaX4YA3x+BEfLqhUAV9WanycKI3TG1IMr5bMJDajDKLlUQ==}
     dependencies:
       '@types/node': 20.8.10
+    dev: true
+
+  /@types/css-modules@1.0.5:
+    resolution: {integrity: sha512-oeKafs/df9lwOvtfiXVliZsocFVOexK9PZtLQWuPeuVCFR7jwiqlg60lu80JTe5NFNtH3tnV6Fs/ySR8BUPHAw==}
     dev: true
 
   /@types/eslint-scope@3.7.4:

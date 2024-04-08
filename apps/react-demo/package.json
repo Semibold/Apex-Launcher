@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@apex/webpack-config": "workspace:*",
+    "@types/css-modules": "1.0.5",
     "@types/react": "18.2.37",
     "@types/react-dom": "18.2.15",
     "eslint-plugin-react": "7.34.1",
