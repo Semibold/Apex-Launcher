@@ -16,6 +16,12 @@ export default createWebpackConfig('react-demo', function (env, argv, config) {
                 baseLoader.svgLoader,
             ],
         },
+        devServer: {
+            allowedHosts: 'all',
+            client: {
+                webSocketURL: 'auto://0.0.0.0:0/ws',
+            },
+        },
         plugins: [basePlugin.webpackBar, basePlugin.bannerPlugin, basePlugin.definePlugin],
     };
 });
