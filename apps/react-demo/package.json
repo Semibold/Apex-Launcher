@@ -14,14 +14,14 @@
     "@apex/svg-project": "workspace:*",
     "mobx": "6.10.2",
     "mobx-react-lite": "4.0.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "devDependencies": {
     "@apex/webpack-config": "workspace:*",
     "@types/css-modules": "1.0.5",
-    "@types/react": "18.2.37",
-    "@types/react-dom": "18.2.15",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
     "eslint-plugin-react": "7.34.1",
     "webpack-cli": "5.1.4"
   }
